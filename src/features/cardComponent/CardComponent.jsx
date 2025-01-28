@@ -28,5 +28,4 @@ CardComponent.propTypes = {
         title: PropTypes.string.isRequired,
         description: PropTypes.string.isRequired,
     }).isRequired,
-    index: PropTypes.number.isRequired,
 };

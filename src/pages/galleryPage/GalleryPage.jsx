@@ -11,7 +11,8 @@ import archivedFour from "../../shared/images/archivedFour.png";
 import archivedFive from "../../shared/images/archivedFive.png";
 import archivedSix from "../../shared/images/archivedSix.png";
 import btn3d from "../../shared/images/btn3d.svg"
-import { BaseComponents } from "../../entities";
+import { BaseComponents, TourCard } from "../../features";
+import { TourModal } from "../../entities";
 // import { useTranslation } from "react-i18next";
 
 const newFoto = [
@@ -90,7 +91,6 @@ export const GalleryPage = () => {
 
     const [activeButton, setActiveButton] = useState(buttons[0].name);
     const [currentMapUrl, setCurrentMapUrl] = useState("");
-    // const { t } = useTranslation(); 
 
     const handleOnClick = (name) => {
         setActiveButton(name);
@@ -135,23 +135,7 @@ export const GalleryPage = () => {
                     {activeButton === "3D ТУР" && (
                         <div className="photo3d_gallery">
                             {threeDd.map((el, index) => (
-                                <div
-                                    // style={{
-                                    //     backgroundImage: `url(${el.img})`,
-                                    // }}
-                                    key={index}
-                                    className="photo3_card">
-                                        <img src={el.img} alt="" />
-                                        <div>
-                                        <h4>{el.name}</h4>
-                                        <button
-                                            className="threeD"
-                                            onClick={() => openModalWithMap(el.mapUrl)}>
-                                            <img src={btn3d} alt="" />
-                                        </button>
-                                    </div>
-
-                                </div>
+                                <TourCard key={index} el={el} openModalWithMap={openModalWithMap}/>
                             ))}
                         </div>
                     )}
@@ -169,23 +153,8 @@ export const GalleryPage = () => {
             </div>
 
             {currentMapUrl && (
-                <div
-                    className="modal"
-                    onClick={closeModal}
-                >
-                    <iframe
-                        src={currentMapUrl}
-                        width="100%"
-                        height="100%"
-                        style={{ border: 0 }}
-                        allowFullScreen=""
-                        loading="lazy"
-                        referrerPolicy="no-referrer-when-downgrade"
-                        title="Google Map"
-                    ></iframe>
-                </div>
+                <TourModal mapUrl={currentMapUrl} closeModal={closeModal}/>
             )}
-            <BaseComponents />
         </div>
     );
 }
