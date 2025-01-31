@@ -1,0 +1,70 @@
+.viewing{
+    &-text{
+        font-family: 'Open Sans';
+        font-size: 36px;
+        font-weight: 700;
+        line-height: 49.03px;
+        text-align: left;
+        text-underline-position: from-font;
+        text-decoration-skip-ink: none;
+        color: #227DA5;
+    }
+    &-card{
+        .col-9{
+            width: 75%;
+            padding: 0 15px;
+            .row{
+                align-items: center;
+            }
+        }   
+        width: 100%;
+        margin: 20px auto;
+        padding: 13px;
+        border-radius: 20px;
+        box-shadow: 0px 2px 3px 0px #0000004D;
+        box-shadow: 0px 6px 10px 4px #00000026;        
+    }
+    &-img{
+        width: 100%;
+    }
+    &-calendar-img{
+        object-fit: contain;
+    } 
+    &-date{
+        font-family: 'SF Pro Display';
+        font-size: 18px;
+        font-weight: 400;
+        line-height: 21.48px;
+        text-align: left;
+        text-underline-position: from-font;
+        text-decoration-skip-ink: none;
+        color: #227DA5;
+    }
+    &-title{
+        display: block;  
+        font-family: 'Bebas Neue';
+        font-size: 34px;
+        font-weight: 700;
+        line-height: 34px;
+        text-align: left;
+        text-underline-position: from-font;
+        text-decoration-skip-ink: none;
+        color: #227DA5;    
+        margin-top: 13px;
+        margin-bottom: 9px;
+    }
+    &-description{
+        font-family: 'SF Pro Display';
+        font-size: 19.52px;
+        font-style: italic;
+        font-weight: 300;
+        line-height: 23.29px;
+        text-align: left;
+        text-underline-position: from-font;
+        text-decoration-skip-ink: none;  
+        width: 100%;      
+        color: #227DA5;
+        position: relative;
+    
+    }
+}

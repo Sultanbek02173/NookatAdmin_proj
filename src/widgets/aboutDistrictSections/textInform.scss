@@ -1,0 +1,31 @@
+.text-con{
+    margin-top: 50px;
+
+    .title-text{
+        margin-bottom: 63px;
+        color: rgba(34, 125, 165, 1);
+        font-family: 'Bebas Neue', sans-serif;
+    }
+
+    .first-discription {
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+        color: rgba(34, 125, 165, 1);
+
+        .first-discription1{
+            font-family: 'SF Pro Display', sans-serif;
+        }
+
+        .first-discription2{
+            font-family: 'SF Pro Display', sans-serif;
+        }
+    }
+
+    .other-desc{
+        display: grid;
+        margin: 0 auto;
+        color: rgba(34, 125, 165, 1);
+        font-family: 'SF Pro Display', sans-serif;
+    }
+}

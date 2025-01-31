@@ -1,15 +1,17 @@
+
 import { useState, useCallback } from "react";
 import { NavLink } from "react-router-dom";
 
+
 export const headerMenu = [
   { name: "ГЛАВНАЯ", path: "/" },
-  { name: "О РАЙОНЕ", path: "/about" },
+  { name: "О РАЙОНЕ", path: "/aboutDistrict" },
   {
     name: "АДМИНИСТРАЦИЯ", 
     subMenu: [
-      { name: "руководители", path: "/" },
-      { name: "структура администрации", path: "/" },
-      { name: "вакансии", path: "/" },
+      { name: "руководители", path: "/administration" },
+      { name: "структура администрации", path: "/administration" },
+      { name: "вакансии", path: "/administration" },
     ],
   },
   { name: "НОВОСТИ", path: "/news" },
@@ -28,6 +30,7 @@ export const headerMenu = [
   { name: "ГАЛЕРЕЯ", path: "/gallery" },
 ];
 
+
 const HeaderMenu = () => {
   const [activeMenu, setActiveMenu] = useState(null);
 
@@ -39,12 +42,9 @@ const HeaderMenu = () => {
     <div className="header_menu">
       {headerMenu.map((page) => (
         <div key={page.name} className="menu_item">
-          <div
-            className="link"
-            onClick={() => page.subMenu && handleMenuClick(page.name)}
-          >
-            <NavLink to={page.path}>{page.name}</NavLink>
-          </div>
+         
+            <NavLink  className="link"   onClick={() => page.subMenu && handleMenuClick(page.name)} to={page.path}>{page.name}</NavLink>
+       
           {page.subMenu && activeMenu === page.name && (
             <div className="dropdown_menu">
               {page.subMenu.map((subPage) => (

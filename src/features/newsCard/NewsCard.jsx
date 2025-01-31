@@ -7,9 +7,11 @@ export const NewsCard = ({item}) => {
             <div className="news_card">
                 <img src={item.img} alt="" />
                 <div className='button'>
+                    <div className='btn_3d'>
                     <button className="threeD">
                         <img src={btn3d} alt="" />
                     </button>
+                    </div>
                 </div>
             </div>
             <div className='news_text'>

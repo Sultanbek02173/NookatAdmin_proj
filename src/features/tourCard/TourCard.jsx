@@ -3,13 +3,20 @@ import btn3d from '../../shared/images/btn3d.svg';
 
 export const TourCard = ({ el, openModalWithMap }) => {
     return (
-        <div className="photo3_card">
-            <img src={el.img} alt="" />
+        <div
+            style={{
+                backgroundImage: `url(${el.img})`,
+            }}
+            className="photo_card3">
             <div>
                 <h4>{el.name}</h4>
-                <button className="threeD" onClick={() => openModalWithMap(el.mapUrl)}>
-                    <img src={btn3d} alt="" />
-                </button>
+
+                <div className="btn_3d">
+                    <button
+                        className="threeD"
+                        onClick={() => openModalWithMap(el.mapUrl)}>
+                        <img src={btn3d} alt="" />
+                    </button></div>
             </div>
 
         </div>

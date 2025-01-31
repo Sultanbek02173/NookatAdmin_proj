@@ -1,0 +1,20 @@
+.slider-container {
+    position: relative;
+    width: 95%;
+    margin: 0 auto; 
+
+    .slide {
+        display: grid;
+        place-items: center; 
+        margin-top: 30px;
+      }
+
+    .slide-image {
+        width: 95%;
+        height: 384px;
+        object-fit: cover; 
+        border-radius: 20px; 
+        justify-items: center;
+      }
+
+}

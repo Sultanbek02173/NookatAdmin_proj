@@ -126,14 +126,14 @@ export const GalleryPage = () => {
                         <div className="photo_gallery">
                             {newFoto.map((el, index) => (
                                 <div key={index} className="photo_card">
-                                    <img src={el.img} alt={`new-foto-${index}`} />
+                                    <img className="photo_card_img" src={el.img} alt={`new-foto-${index}`} />
                                 </div>
                             ))}
                         </div>
                     )}
 
                     {activeButton === "3D ТУР" && (
-                        <div className="photo3d_gallery">
+                        <div className="photo_gallery">
                             {threeDd.map((el, index) => (
                                 <TourCard key={index} el={el} openModalWithMap={openModalWithMap}/>
                             ))}
@@ -144,7 +144,7 @@ export const GalleryPage = () => {
                         <div className="photo_gallery">
                             {archived.map((el, index) => (
                                 <div key={index} className="photo_card">
-                                    <img src={el.img} alt={`archived-foto-${index}`} />
+                                    <img className="photo_card_img" src={el.img} alt={`archived-foto-${index}`} />
                                 </div>
                             ))}
                         </div>
