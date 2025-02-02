@@ -1,9 +1,11 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Navigations } from "../../features";
 import { Liders, Schedule, Structure, Vacancies } from "../../widgets";
 import './adminestration.scss'
+import { useParams } from "react-router-dom";
 
 export const AdministrationPage = () => {
+    const { id } = useParams();
     const [selected, setSelected] = useState(1)
     const navElements = [
         { name: 'Руководители',id: 1 },
@@ -11,6 +13,10 @@ export const AdministrationPage = () => {
         { name: 'Вакансии',id: 3 },
         { name: 'График приема граждан',id: 4},
     ];
+
+    useEffect(() => {
+        setSelected(id);
+    }, [id])
 
     return (
         <div className="container app-container">

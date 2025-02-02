@@ -19,3 +19,6 @@ export { TextInform } from './aboutDistrictSections/TextInform';
 
 // news sections
 export { DistrictsNews } from './newsSections/DistrictsNews';
+
+// news detail sections
+export { NewsDescription } from './newsDetailSections/NewsDescription';

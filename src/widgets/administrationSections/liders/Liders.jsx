@@ -2,6 +2,7 @@ import { SliderComponent } from '../../../features'
 import ru from '../../../shared/images/adminPage/ru.png'
 import ru2 from '../../../shared/images/adminPage/ru2.png'
 import ru3 from '../../../shared/images/adminPage/ru3.png'
+import '../../../app/styles/app.scss'
 import '../slide.scss';
 
 
@@ -14,21 +15,17 @@ export function Liders() {
     {image: ru2, name: 'Эргешов Асилбек Камилович', status:'Мэр Ноукатского района'},
   ]
   return (
-    <section>
-      {
-
-      }
+    <section className='container'>
         {ruimage.map((item, index) => (
           <div className="grid-ru" key={index}>
-            <div className="img-ru">
-              <img src={item.image}  />
-            </div>
+            <div className="ru-cards">
+              <img src={item.image} className='img-ru'/>
 
             <div className="ru-names">
               <h2 id='name-ru'>{item.name}</h2>
               <p id='status-ru'><i>{item.status}</i></p>
             </div>
-
+              </div>
           </div>
         ))}
       {/* <SliderComponent /> */}

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import '../../../app/styles/app.scss'
 import '../slide.scss';
 
 export const Vacancies = () => {
@@ -32,7 +33,7 @@ export const Vacancies = () => {
   };
 
   return (
-    <div>
+    <div className='container'>
       <div className="vac-container">
         <div className="vac-text">
           <h1>Доступные вакансии</h1>

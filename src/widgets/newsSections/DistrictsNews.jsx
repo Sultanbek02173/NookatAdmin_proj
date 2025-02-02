@@ -1,7 +1,9 @@
-import { CardComponent } from "../../features";
+import { CardComponent, MobilCardComponent } from "../../features";
 import viewingImg from '../../shared/images/homePageImg/image (5).png';
 import calendar from '../../shared/images/homePageImg/calendar.png';
 import './districtsNews.scss'
+import { useMediaQuery } from "usehooks-ts";
+import { Link } from "react-router-dom";
 
 export const DistrictsNews = () => {
     const block = [
@@ -39,15 +41,18 @@ export const DistrictsNews = () => {
         },
         
     ]
+    const matches = useMediaQuery('(max-width: 576px)')
+
     return (
         <section className="container">
             <div className="viewingNews">
                 <h1 className="viewing-text">новости ноокатского района</h1>
                 {
                     block.map((item) => (
-                        <CardComponent key={item.id} item={item}/>
-                    ))
-                }
+                        matches ? <Link key={item.id} to={`/newsDetail/${item.id}`}><MobilCardComponent block={item}/></Link>  
+                            : <Link key={item.id} to={`/newsDetail/${item.id}`}><CardComponent block={item}/></Link>
+                    ))  
+               }
             </div>
         </section>
     );

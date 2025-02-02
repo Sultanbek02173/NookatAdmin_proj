@@ -2,12 +2,13 @@
 
 .header {
   font-family: "Bebas Neue", sans-serif;
+  padding-top: 10px;
 
   .headerTop {
     width: 100%;
     margin: 0 auto;
     transition: all 0.3s ease;
-    margin: 10px 0;
+    margin-bottom: 10px;
     padding: 10px;
     background: #E6ECF5;
     border-radius: 20px;
@@ -100,12 +101,12 @@
 
     .header_menu {
       display: flex;
-
+      align-items: center;
       flex-wrap: wrap;
       gap: 10px;
 
       .menu_item {
-        margin: 20px auto;
+        margin: 20px 0;
 
       }
 
@@ -119,8 +120,9 @@
         line-height: 20px;
       }
 
+
       .dropdown_menu {
-        transition: all 3s ease;
+        transition: all 5s ease;
         position: absolute;
         width: auto;
         background: #227DA5;
@@ -128,10 +130,9 @@
         padding: 0 10px 10px 10px;
         border-radius: 5px;
         z-index: 10;
-        margin-top: 18px;
+        margin-top: 17px;
 
         .dropdown_link {
-          white-space: nowrap;
           display: block;
           text-decoration: none;
           color: #227da5;
@@ -179,7 +180,7 @@
 }
 
 
-@media (max-width: 1024px) {
+@media (max-width: 1200px) {
 
   .header {
 
@@ -204,7 +205,7 @@
   }
 }
 
-@media (max-width: 666px) {
+@media (max-width: 768px) {
 
   .header {
     background: url(../../shared/images/header.png);
@@ -224,6 +225,7 @@
 
     .headerTop {
       flex-direction: unset;
+
       .burger-menu {
 
         display: flex !important;
@@ -280,6 +282,7 @@
           }
         }
       }
+
       &_right {
         display: none !important;
 
@@ -296,39 +299,56 @@
       .headerBottom_img {
         background: none;
       }
+
       .header_menu {
 
-      .menu_item {
-        width: 45%;
-      }
+        .menu_item {
+          width: 45%;
+        }
 
-      .link {
-        height: 65px;
-        text-align: center;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-wrap: wrap;
-        width: 100% !important;
-      }
-
-      .dropdown_menu {
-      
-        width: 45% ;
-        background: #fff ;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        margin-top: 4px ;
-        transition: all 3s ease;
-
-        .dropdown_link {
-          color: #fff;
-          background: #227DA5;
+        .link {
+          height: 65px;
+          text-align: center;
           display: flex;
           align-items: center;
           justify-content: center;
-        
+          flex-wrap: wrap;
+          width: 100%;
+        }
+
+        .dropdown_menu {
+          max-width: 245px;
+          width: 45%;
+          background: #fff;
+          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+          margin-top: 4px;
+          transition: all 3s ease;
+
+          .dropdown_link {
+            color: #fff;
+            background: #227DA5;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            width: 100%;
+
+          }
         }
       }
     }
   }
-}}
+}
+
+@media screen and (max-width: 376px) {
+  .header {
+    .headerTop {
+      .burger-menu {
+        .menu__box {
+          width: 200px;
+        }
+      }
+    }
+  }
+}

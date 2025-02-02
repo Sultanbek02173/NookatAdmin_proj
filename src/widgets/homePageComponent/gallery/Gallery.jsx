@@ -18,7 +18,7 @@ export const Gallery = () => {
                     </div>
                     <div className="col-4">
                         <img src={imgCol2} alt="" className='gallery-img'/>
-                        <div className="gallery-button">
+                        <div className="gallery-button center-btn">
                             <h2 className="gallery-button-text">3D тур</h2>
                         </div>
                     </div>

@@ -1,8 +1,8 @@
 import { NewsCard, TourCard } from '../../../features';
-import './lastNews.scss';
 import threeD from '../../../shared/images/threeD.png';
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
+import './lastNews.scss';
 
 export const LastNews = () => {
 
@@ -39,6 +39,21 @@ export const LastNews = () => {
                 className="mySwiper"
                 slidesPerView={2.5}
                 spaceBetween={20}
+                breakpoints={{
+                    1024: {
+                      slidesPerView: 2.5,
+                    },
+                    768: {
+                        slidesPerView: 1.5,
+                    },
+                    576: {
+                        slidesPerView: 1
+                    },
+                    0: {
+                        slidesPerView: 1
+                    }
+                  }}
+
                 >
                 {
                     threeDd &&
@@ -54,4 +69,3 @@ export const LastNews = () => {
         </section>
     );
 }
-

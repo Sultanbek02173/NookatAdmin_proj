@@ -1,20 +1,55 @@
-.slider-container {
-    position: relative;
+.slider_container {
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+
+  .slide {
+    display: grid;
+    place-items: center;
+    margin-top: 30px;
+  }
+
+  .slide-image {
     width: 95%;
-    margin: 0 auto; 
+    height: 384px;
+    object-fit: cover;
+    border-radius: 20px;
+    justify-items: center;
+  }
+}
 
-    .slide {
-        display: grid;
-        place-items: center; 
-        margin-top: 30px;
-      }
+.sliderBtn {
+  display: flex; /* Используем flex без кавычек */
+  background-color: rgba(34, 125, 165, 1); /* Без кавычек */
+  color: white;
+  border-radius: 50%;
+  width: 67px;
+  height: 67px;
+  justify-content: center; /* Без кавычек */
+  align-items: center;
+  z-index: 10; /* Без кавычек */
+}
 
+@media screen and (max-width: 992px) {
+  .slider_container {
     .slide-image {
-        width: 95%;
-        height: 384px;
-        object-fit: cover; 
-        border-radius: 20px; 
-        justify-items: center;
-      }
+      height: 275px;
+    }
+  }
+}
 
+@media screen and (max-width: 768px) {
+  .slider_container {
+    .slide-image {
+      height: 255px;
+    }
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .slider_container {
+    .slide-image {
+      height: 230px;
+    }
+  }
 }

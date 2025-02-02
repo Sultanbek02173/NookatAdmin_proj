@@ -4,7 +4,7 @@ import '../slide.scss';
 
 export function Structure() {
   return (
-    <div>
+    <div className='container'>
        <div className="str-con">
           <div className="title-text" ><h1>структура администрации</h1></div>
             <div className="image-con">

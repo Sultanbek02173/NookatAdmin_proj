@@ -1,7 +1,8 @@
 import './viewSuggestions.scss'
 import viewingImg from '../../../shared/images/homePageImg/image (5).png'
 import calendar from '../../../shared/images/homePageImg/calendar.png'
-import { CardComponent } from '../../../features'
+import { CardComponent, MobilCardComponent } from '../../../features'
+import { useMediaQuery } from 'usehooks-ts'
 export const ViewSuggestions = () => {
     const block = [
         {
@@ -37,16 +38,21 @@ export const ViewSuggestions = () => {
             description: 'Ноокатская районная государственная администрация продолжает работать над улучшением жизненных условий для жителей района. В рамках текущих инициатив активно ведутся работы по улучшению инфраструктуры, а также обеспечению социальной поддержки для населения. Мы нацелены на повышение качества жизни каждого жителя и открытость в вопросах управления.В ближайшее время ожидаются новые проекты, которые затронут важные аспекты развития региона, включая улучшение здравоохранения, образования и транспортной инфраструктуры. '
         },
         
-    ]
+    ];
+    const matches = useMediaQuery('(max-width: 576px)')
+    
     return (
         <div className='container'>
             <div className="viewing">
                 <h1 className="viewing-text">Блок предлагаем к просмотру</h1>
                 {
                     block.map((item) => (
-                        <CardComponent key={item.id} item={item}/>
-                    ))
-                }
+                        <div key={item.id}>
+                            {matches ? <MobilCardComponent block={item}/>  
+                                : <CardComponent block={item}/>}
+                        </div>
+                    ))  
+               }
             </div>
         </div>
     );

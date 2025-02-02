@@ -1,5 +1,8 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./Gallery.scss";
+import "@fancyapps/ui/dist/fancybox/fancybox.css";
+import { Fancybox } from "@fancyapps/ui";
+
 import newFotoOne from "../../shared/images/newFotoOne.png";
 import newFotoTwo from "../../shared/images/newFotoTwo.png";
 import newFotoThree from "../../shared/images/newFotoThree.png";
@@ -10,10 +13,8 @@ import archivedThree from "../../shared/images/archivedThree.png";
 import archivedFour from "../../shared/images/archivedFour.png";
 import archivedFive from "../../shared/images/archivedFive.png";
 import archivedSix from "../../shared/images/archivedSix.png";
-import btn3d from "../../shared/images/btn3d.svg"
-import { BaseComponents, TourCard } from "../../features";
+import { TourCard } from "../../features";
 import { TourModal } from "../../entities";
-// import { useTranslation } from "react-i18next";
 
 const newFoto = [
     { img: newFotoOne },
@@ -69,7 +70,7 @@ const threeDd = [
         name: "Кара-Кой ",
         mapUrl: "https://www.google.com/maps/embed?pb=!4v1737569549476!6m8!1m7!1sCAoSLEFGMVFpcE1EOWE3Sktzb2haRTNUT3MwNWkzT2tOWHdWa2wwQ1liTVJ1UG9P!2m2!1d40.44229808485902!2d72.80227582119277!3f343.2831737063165!4f3.076413581579601!5f0.7820865974627469",
     },
- 
+
 ];
 
 const archived = [
@@ -103,6 +104,12 @@ export const GalleryPage = () => {
     const closeModal = () => {
         setCurrentMapUrl("");
     };
+    useEffect(() => {
+        Fancybox.bind("[data-fancybox]", {});
+        return () => {
+            Fancybox.unbind("[data-fancybox]");
+        };
+    }, []);
 
 
     return (
@@ -125,9 +132,9 @@ export const GalleryPage = () => {
                     {activeButton === "НОВЫЕ ФОТОГРАФИИ" && (
                         <div className="photo_gallery">
                             {newFoto.map((el, index) => (
-                                <div key={index} className="photo_card">
+                                <a key={index} data-fancybox="gallery" href={el.img} className="photo_card">
                                     <img className="photo_card_img" src={el.img} alt={`new-foto-${index}`} />
-                                </div>
+                                </a>
                             ))}
                         </div>
                     )}
@@ -135,7 +142,7 @@ export const GalleryPage = () => {
                     {activeButton === "3D ТУР" && (
                         <div className="photo_gallery">
                             {threeDd.map((el, index) => (
-                                <TourCard key={index} el={el} openModalWithMap={openModalWithMap}/>
+                                <TourCard key={index} el={el} openModalWithMap={openModalWithMap} />
                             ))}
                         </div>
                     )}
@@ -143,9 +150,9 @@ export const GalleryPage = () => {
                     {activeButton === "АРХИВНЫЕ ФОТОГРАФИИ" && (
                         <div className="photo_gallery">
                             {archived.map((el, index) => (
-                                <div key={index} className="photo_card">
+                                <a key={index} data-fancybox="gallery" href={el.img} className="photo_card">
                                     <img className="photo_card_img" src={el.img} alt={`archived-foto-${index}`} />
-                                </div>
+                                </a>
                             ))}
                         </div>
                     )}
@@ -153,7 +160,7 @@ export const GalleryPage = () => {
             </div>
 
             {currentMapUrl && (
-                <TourModal mapUrl={currentMapUrl} closeModal={closeModal}/>
+                <TourModal mapUrl={currentMapUrl} closeModal={closeModal} />
             )}
         </div>
     );

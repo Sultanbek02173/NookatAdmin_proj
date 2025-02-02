@@ -114,7 +114,7 @@ $white-color: #fff;
     }
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1200px) {
     .footer {
         &_group {
 
@@ -168,17 +168,17 @@ $white-color: #fff;
     }
 }
 
-@media (max-width: 490px) {
+@media (max-width: 576px) {
 
     .footer {
         &_group {
             &_logo {
-                flex: 1 1 100%;
+                margin-right: 0;
 
                 h1 {
                     max-width: 100%;
                     margin-left: 20px;
-                    font-size: 18px; // перемещено из 480px
+                    font-size: 18px; 
                 }
             }
 

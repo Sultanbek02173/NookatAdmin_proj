@@ -3,9 +3,12 @@ import '../styles/app.scss';
 import { 
   AboutDistrict,
   AdministrationPage, 
+  AntiCorruptionPage, 
   GalleryPage, 
   HomePage, 
-  NewsPage 
+  NewsDetail, 
+  NewsPage, 
+  ProjectsPage
 } from '../../pages';
 import { Footer, Header } from '../../widgets';
 
@@ -20,7 +23,7 @@ function App() {
       element: <GalleryPage />
     },
     {
-      path: '/administration',
+      path: '/administration/:id',
       element: <AdministrationPage />
     },
     {
@@ -28,8 +31,20 @@ function App() {
       element: <NewsPage />
     },
     {
+      path: '/newsDetail/:id',
+      element: <NewsDetail />
+    },
+    {
       path: '/aboutDistrict',
       element: <AboutDistrict />
+    },
+    {
+      path: '/projects',
+      element: <ProjectsPage />
+    },
+    {
+      path: '/anti-corruption',
+      element: <AntiCorruptionPage />
     }
   ];
   return (

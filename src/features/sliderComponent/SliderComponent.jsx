@@ -1,4 +1,3 @@
-import React from "react";
 import Boz from "../../shared/images/adminPage/imageSlide.png";
 import Car from "../../shared/images/adminPage/imageCar.png";
 import "./sliderComponent.scss";
@@ -6,7 +5,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-function NextArrow({ className, onClick }) {
+function NextArrow({onClick, className}) {
     return (
       <div
         className={className}
@@ -23,15 +22,14 @@ function NextArrow({ className, onClick }) {
         }}
         onClick={onClick}
       >
-      
+      <span>&#8594;</span>
       </div>
     );
   }
   
-  function PrevArrow(props) {
-    const { className, onClick } = props;
+  function PrevArrow({onClick, className}) {
     return (
-      <div
+      <div 
         className={className}
         style={{
           display: "block",
@@ -40,13 +38,13 @@ function NextArrow({ className, onClick }) {
           borderRadius: "50%",
           width: "67px",
           height: "67px",
-          display:'flex',
+          display: "flex",
           justifyContent: "center",
           alignItems: "center",
           zIndex:'10'
         }}
         onClick={onClick}
-      >
+        >
       
       </div>
     );
@@ -61,6 +59,15 @@ export function SliderComponent() {
     infinite: true,
     slidesToShow: 2,
     slidesToScroll: 1,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
   };
 
   const fakeData = [
@@ -69,7 +76,7 @@ export function SliderComponent() {
   ];
 
   return (
-    <div className="slider-container">
+    <div className="slider_container">
       <Slider {...settings}>
         {fakeData.map((item, index) => (
           <div className="slide" key={index}>
