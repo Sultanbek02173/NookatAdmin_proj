@@ -44,7 +44,7 @@ export const ViewSuggestions = () => {
     return (
         <div className='container'>
             <div className="viewing">
-                <h1 className="viewing-text">Блок предлагаем к просмотру</h1>
+                <h1 className="viewing-text">предлагаем к просмотру</h1>
                 {
                     block.map((item) => (
                         <div key={item.id}>

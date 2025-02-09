@@ -1,6 +1,7 @@
+import { Link } from 'react-router-dom';
 import './navigations.scss';
 
-export const Navigations = ({list, selected, setSelected}) => {
+export const Navigations = ({ list, selected, setSelected }) => {
     return (
         <aside className="nav-container">
             {list.map((item) => (
@@ -19,6 +20,12 @@ export const Navigations = ({list, selected, setSelected}) => {
                 <strong>
                 <p>{item.name}</p>
                 </strong>
+
+                {
+                   item.link === true && (
+                    <Link to={'/aiyl-aimaks'}>{item.name}</Link>
+                   ) 
+                }
             </button>
             ))}
         </aside>

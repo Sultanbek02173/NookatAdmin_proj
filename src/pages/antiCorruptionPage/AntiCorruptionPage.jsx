@@ -2,6 +2,7 @@ import { BaseComponents } from '../../features';
 import viewingImg from '../../shared/images/homePageImg/image (5).png';
 import calendar from '../../shared/images/homePageImg/calendar.png';
 import './antiCorruptionPage.scss';
+import { useState } from 'react';
 
 export const AntiCorruptionPage = () => {
     const block = [
@@ -48,14 +49,23 @@ export const AntiCorruptionPage = () => {
             "Ноокатская районная государственная администрация продолжает работать над улучшением жизненных условий для жителей района. В рамках текущих инициатив активно ведутся работы по улучшению инфраструктуры, а также обеспечению социальной поддержки для населения. Мы нацелены на повышение качества жизни каждого жителя и открытость в вопросах управления.В ближайшее время ожидаются новые проекты, которые затронут важные аспекты развития региона, включая улучшение здравоохранения, образования и транспортной инфраструктуры. ",
         },
     ];
+    const [index, setIndex] = useState(null);
+    
+    const changeIndex = (id) => {
+        if(id === index){
+            setIndex(null)
+        }else{
+            setIndex(id)
+        } 
+    }
     return (
         <div className='container'>
             <div className="viewing_projects">
                 <h1 className="viewing_projects-text">антикоррупционные мероприятия</h1>
                 {
                     block.map((item) => (
-                        <div>
-                            <BaseComponents item={item}/>
+                        <div className='projects-block' key={item.id} onClick={() => changeIndex(item.id)}>
+                            <BaseComponents item={item} index={index} changeIndex={changeIndex}/>
                         </div>
                     ))  
                 }

@@ -135,10 +135,12 @@
 
 @media screen and (max-width: 576px) {
    .viewing{
-        .col-6{
-            .row{
-                align-items: center;
-                flex-wrap: nowrap;
+        &-card{
+            .col-6{
+                .row{
+                    align-items: center;
+                    flex-wrap: nowrap;
+                }
             }
         }
         &-date{

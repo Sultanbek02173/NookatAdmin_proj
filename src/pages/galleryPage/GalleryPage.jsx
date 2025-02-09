@@ -15,6 +15,7 @@ import archivedFive from "../../shared/images/archivedFive.png";
 import archivedSix from "../../shared/images/archivedSix.png";
 import { TourCard } from "../../features";
 import { TourModal } from "../../entities";
+import { useParams } from "react-router-dom";
 
 const newFoto = [
     { img: newFotoOne },
@@ -92,6 +93,7 @@ export const GalleryPage = () => {
 
     const [activeButton, setActiveButton] = useState(buttons[0].name);
     const [currentMapUrl, setCurrentMapUrl] = useState("");
+    const {id} = useParams();
 
     const handleOnClick = (name) => {
         setActiveButton(name);
@@ -111,6 +113,15 @@ export const GalleryPage = () => {
         };
     }, []);
 
+    useEffect(() => {
+        if (id === "новые-фотографии") {
+            setActiveButton("НОВЫЕ ФОТОГРАФИИ");
+        } else if (id === "3D-тур") {
+            setActiveButton("3D ТУР");
+        } else if (id === "архивные-фотографии") {
+            setActiveButton("АРХИВНЫЕ ФОТОГРАФИИ");
+        }
+    }, [id]);
 
     return (
         <div className="gallery">

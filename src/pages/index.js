@@ -7,3 +7,4 @@ export { NationalAppeal } from './nationalAppeal/NationalAppeal';
 export { NewsDetail } from './newsDetail/NewsDetail';
 export { ProjectsPage } from './projectsPage/ProjectsPage';
 export { AntiCorruptionPage } from './antiCorruptionPage/AntiCorruptionPage';
+export { AiylAimaksPage } from './aiylAimaksPage/AiylAimaksPage';

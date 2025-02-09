@@ -1,7 +1,21 @@
 import './textInform.scss';
 import bg from '../../shared/images/aboutDistrict/bg.png'
+import { BaseComponents } from '../../features';
+import { useState } from 'react';
  
-export const TextInform = ({ currentTitle, currentText }) => {
+export const TextInform = ({ currentTitle, currentText, person }) => {
+    const [index, setIndex] = useState();
+    
+    const changeIndex = (id) => {
+        if(id === index){
+            setIndex()
+        }else{
+            setIndex(id)
+        } 
+    }
+
+    console.log(index);
+    
     
     return (
         <section className="text-con">
@@ -27,6 +41,14 @@ export const TextInform = ({ currentTitle, currentText }) => {
                     </div>
                     )
                 }  
+                {
+                    person &&
+                    person.map((item) => (
+                        <div key={item.id} className="base-components__parent">
+                            <BaseComponents item={item} index={index} changeIndex={changeIndex} />
+                        </div>
+                    ))
+                }
             </div>
         </section>
     );

@@ -47,6 +47,9 @@
         font-size: 19px;
         font-weight: 700;
         cursor: pointer;
+        padding: 2px 8px;
+        margin: 5px;
+        transition: all .3s;
       }
 
       span {
@@ -54,7 +57,13 @@
         font-size: 19px;
         font-weight: 700;
       }
-
+      .languageButtons button.active {
+        border: 1px solid #227da5;
+        background-color: #227da5;
+        color: #fff;
+      
+    }
+    
       p {
         font-size: 19px;
         line-height: 19px;

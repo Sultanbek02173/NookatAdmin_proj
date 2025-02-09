@@ -19,6 +19,10 @@ export { TextInform } from './aboutDistrictSections/TextInform';
 
 // news sections
 export { DistrictsNews } from './newsSections/DistrictsNews';
+export { NewsMedia } from './newsMedia/NewsMedia';
 
 // news detail sections
 export { NewsDescription } from './newsDetailSections/NewsDescription';
+
+// aiyl aimaks sections
+export { AiylAimaksInfo } from './aiylAimaksSections/AiylAimaksInfo';

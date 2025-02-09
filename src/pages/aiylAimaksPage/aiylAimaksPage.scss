@@ -1,5 +1,4 @@
-
-.app-container {
+.aiyl-container {
     width: 100%;
     display: flex; 
     margin-top: 20px;
@@ -11,7 +10,7 @@
 }
   
 @media (max-width: 1000px) {
-    .app-container {
+    .aiyl-container {
         display: block;
         flex-direction: column;
 

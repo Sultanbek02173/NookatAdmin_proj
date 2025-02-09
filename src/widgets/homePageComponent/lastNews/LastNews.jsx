@@ -3,6 +3,7 @@ import threeD from '../../../shared/images/threeD.png';
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import './lastNews.scss';
+import { Link } from 'react-router-dom'
 
 export const LastNews = () => {
 
@@ -59,13 +60,13 @@ export const LastNews = () => {
                     threeDd &&
                     threeDd.map(item => (
                         <SwiperSlide className='sliderItem' key={item.id}>
-                            <NewsCard item={item}/>
+                            <Link to={`/news-detail/${item.id}`}><NewsCard item={item}/></Link>
                         </SwiperSlide>
                     ))
                 }
             </Swiper>
 
-            <button className='newsLink'>смотреть все новости</button>
+            <Link to={'/news'}><button className='newsLink'>смотреть все новости</button></Link>
         </section>
     );
 }

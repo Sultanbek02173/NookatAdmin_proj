@@ -1,5 +1,5 @@
 .nav-container {
-  width: auto;
+  width: 30%;
     border: none;
     box-shadow: 0 4px 8px rgba(34, 125, 165, 0.52);
     border-radius: 20px;
@@ -13,7 +13,6 @@
       text-decoration: none;
       color: rgba(34, 125, 165, 1);
       font-family: "Bebas Neue", sans-serif;
-      width: 357px;
       height: 54px;
       border: none;
       text-align: start;
@@ -29,20 +28,10 @@
         background-color: rgba(200, 220, 240, 1);
       }
     }
-    @media (max-width:1200px) {
-      width: 90%;
-    }
-
-    @media (max-width:992px) {
-      .nav-element{
-        width: auto;
-      }
-    }
-
-
-
-    @media (max-width:576px) {
-      margin: 0 auto;
-      width: 100%;
   }
+
+  @media (max-width:992px) {
+    .nav-container{
+      width: 100%;
+    }
   }

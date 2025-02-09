@@ -1,9 +1,20 @@
 import { useState, useEffect, useRef } from "react";
 import { NavLink } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 export const headerMenu = [
   { name: "ГЛАВНАЯ", path: "/" },
-  { name: "О РАЙОНЕ", path: "/aboutDistrict" },
+  { name: "О РАЙОНЕ", path: "/about-district/1",
+    subMenu: [
+    { name: "Oбщая информация о районе", path: "/about-district/1" },
+    { name: "паспорт района", path: "/about-district/2" },
+    { name: "Айылные аймаки", path: "/aiyl-aimaks" },
+    { name: "Выдающиеся личности района", path: "/about-district/4" },
+    { name: "история района", path: "/about-district/5" },
+    { name: "карта района", path: "/about-district/6" },
+  ], 
+  },
+  
   {
     name: "АДМИНИСТРАЦИЯ",  path: "/administration/1",
     subMenu: [
@@ -14,12 +25,7 @@ export const headerMenu = [
   },
   { name: "НОВОСТИ", path: "/news" },
   {
-    name: "ОБРАЩЕНИЯ ГРАЖДАН",
-    subMenu: [
-      { name: "Авторизоваться", path: "/" },
-      { name: "Продолжить без авторизации", path: "/" },
-      { name: "администрация", path: "/" },
-    ],
+    name: "ОБРАЩЕНИЯ ГРАЖДАН", path: 'https://portal.tunduk.kg/public_services/new_message_sed'
   },
   { name: "ПРОЕКТЫ", path: "/projects" },
   { name: "АНТИКОРРУПЦИОННЫЕ МЕРОПРИЯТИЯ", path: "/anti-corruption" },
@@ -29,6 +35,7 @@ export const headerMenu = [
 const HeaderMenu = () => {
   const [activeMenu, setActiveMenu] = useState(null);
   const menuRef = useRef(null);
+  const { t } = useTranslation(); 
 
   const handleMouseEnter = (name) => {
     setActiveMenu(name);
@@ -61,7 +68,7 @@ const HeaderMenu = () => {
           onMouseLeave={handleMouseLeave}
         >
           <NavLink className="link" to={page.path}>
-            {page.name}
+            {t(page.name)}
           </NavLink>
 
           {page.subMenu && activeMenu === page.name && (
@@ -72,7 +79,7 @@ const HeaderMenu = () => {
                   to={subPage.path}
                   className="dropdown_link"
                 >
-                  {subPage.name}
+                  {t(subPage.name)}
                 </NavLink>
               ))}
             </div>

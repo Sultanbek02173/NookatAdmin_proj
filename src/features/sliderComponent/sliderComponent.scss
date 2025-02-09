@@ -1,55 +1,83 @@
-.slider_container {
-  position: relative;
+.slider_container{
   width: 100%;
-  margin: 0 auto;
+  position: relative;
+  margin: 0 auto; 
 
-  .slide {
-    display: grid;
-    place-items: center;
-    margin-top: 30px;
+  .slide-img{
+    
+    img{
+      width: 100%;
+    }
   }
 
-  .slide-image {
-    width: 95%;
-    height: 384px;
+  .buttons{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    width: 102%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .custom_prev_button, .custom_next_button{
+      background-color: #227DA5;
+      width: 64px;
+      height: 64px;
+      border: none;
+      border-radius: 50%;
+      padding: 10px;
+
+      img{
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+
+}
+
+
+@media screen and (max-width: 1200px) {
+  .slider_container .buttons .custom_prev_button{
+      width: 44px;
+      height: 44px;
+  }
+
+  .slider_container .buttons .custom_next_button{
+      width: 44px;
+      height: 44px;
+  }
+}
+
+@media screen and (max-width: 956px) {
+  .slider_container .buttons .custom_prev_button{
+      width: 38px;
+      height: 38px;
+  }
+
+  .slider_container .buttons .custom_next_button{
+      width: 38px;
+      height: 38px;
+  }
+}
+
+@media screen and (max-width: 556px) {
+  .slider_container .buttons .custom_prev_button{
+      width: 38px;
+      height: 38px;
+  }
+
+  .slider_container .buttons .custom_next_button{
+      width: 38px;
+      height: 38px;
+  }
+
+  .slide-img img{
+    width: 100%;
+    height: 232px;
     object-fit: cover;
     border-radius: 20px;
-    justify-items: center;
-  }
-}
-
-.sliderBtn {
-  display: flex; /* Используем flex без кавычек */
-  background-color: rgba(34, 125, 165, 1); /* Без кавычек */
-  color: white;
-  border-radius: 50%;
-  width: 67px;
-  height: 67px;
-  justify-content: center; /* Без кавычек */
-  align-items: center;
-  z-index: 10; /* Без кавычек */
-}
-
-@media screen and (max-width: 992px) {
-  .slider_container {
-    .slide-image {
-      height: 275px;
-    }
-  }
-}
-
-@media screen and (max-width: 768px) {
-  .slider_container {
-    .slide-image {
-      height: 255px;
-    }
-  }
-}
-
-@media screen and (max-width: 576px) {
-  .slider_container {
-    .slide-image {
-      height: 230px;
-    }
   }
 }

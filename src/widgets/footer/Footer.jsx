@@ -5,13 +5,17 @@ import ffff from "../.././shared/images/ffff.svg";
 import koz from "../.././shared/images/koz.svg";
 import "./Footer.scss"
 import { NavLink } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+
 const statistics = [
     { label: "Просмотры", value: 124 },
     { label: "Посетители", value: 124 },
     { label: "Визиты", value: 124 },
   ];
-  
+
 export const Footer = () => {
+  const { t } = useTranslation(); 
+
     return (
         <footer className="footer">
           <div className="container">
@@ -22,20 +26,23 @@ export const Footer = () => {
               </div>
     
               <div className="footer_group_nav">
-                <h2>Навигация</h2>
+                <h2>
+                  {t("Навигация")}
+                  </h2>
                 <nav>
                   <HeaderMenu />
                   <NavLink to="/aboutsmm" className="link">
-                    СМИ о нас
+                    {t("СМИ о нас")}
+
                   </NavLink>
                 </nav>
               </div>
     
               <div className="footer_group_statistic">
-                <h2>Статистика</h2>
+                <h2>{t("Статистика")}</h2>
                 {statistics.map((stat, index) => (
                   <div key={index}>
-                    <h4>{stat.label}</h4>
+                    <h4>{t(stat.label)}</h4>
                     <p>
                       <img src={koz} alt={stat.label} />
                       {stat.value}
@@ -44,23 +51,11 @@ export const Footer = () => {
                 ))}
               </div>
     
-              <div className="footer_group_info">
-                <h2>Информация</h2>
-                <nav>
-                  <NavLink to="/" className="link">
-                    FAQ
-                  </NavLink>
-                  <NavLink to="/" className="link">
-                    Условия
-                  </NavLink>
-                  <NavLink to="/" className="link">
-                    Конфиденциальность
-                  </NavLink>
-                </nav>
-              </div>
-    
               <div className="footer_group_socials">
-                <h2>Соц сети</h2>
+                <h2>
+                {t("Соц сети")}
+
+                </h2>
                 <div className="socials">
                   <div>
                     <img src={instagramIcon} alt="Instagram" />

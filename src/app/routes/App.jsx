@@ -3,6 +3,7 @@ import '../styles/app.scss';
 import { 
   AboutDistrict,
   AdministrationPage, 
+  AiylAimaksPage, 
   AntiCorruptionPage, 
   GalleryPage, 
   HomePage, 
@@ -11,6 +12,7 @@ import {
   ProjectsPage
 } from '../../pages';
 import { Footer, Header } from '../../widgets';
+import { ScrollButton } from '../../entities';
 
 function App() {
   const routesArr = [
@@ -19,7 +21,7 @@ function App() {
       element: <HomePage />
     },
     {
-      path: '/gallery',
+      path: '/gallery/:id',
       element: <GalleryPage />
     },
     {
@@ -31,11 +33,11 @@ function App() {
       element: <NewsPage />
     },
     {
-      path: '/newsDetail/:id',
+      path: '/news-detail/:id',
       element: <NewsDetail />
     },
     {
-      path: '/aboutDistrict',
+      path: '/about-district/:id',
       element: <AboutDistrict />
     },
     {
@@ -45,6 +47,10 @@ function App() {
     {
       path: '/anti-corruption',
       element: <AntiCorruptionPage />
+    },
+    {
+      path: '/aiyl-aimaks',
+      element: <AiylAimaksPage />
     }
   ];
   return (
@@ -56,6 +62,7 @@ function App() {
                 <Route key={index} path={item.path} element={item.element} />
             ))}
         </Routes>
+        <ScrollButton />
         <Footer />
     </BrowserRouter>
   )
