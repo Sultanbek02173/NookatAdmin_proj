@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import '../scrollButton/ScrollButton.scss';
+import './scrollButton/ScrollButton.scss';
 import scrollButton from './ScrollButton.svg';
 
 export function ScrollButton() {
