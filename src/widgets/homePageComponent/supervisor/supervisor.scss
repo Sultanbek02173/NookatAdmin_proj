@@ -115,6 +115,13 @@
 
 @media screen and (max-width: 992px) {
     .surervisorCont {
+        margin-top: 80px;
+
+        .textCont__title{
+            margin-top: 26px;
+            margin-bottom: 17px;
+        }
+
         .imgCont {
             .supervName {
                 font-size: 24px;
@@ -149,6 +156,7 @@
     .surervisorCont .imgCont .supervName p {
         font-size: 30px;
     }
+
     .surervisorCont .imgCont .supervName{
         padding: 11px 36px;
     }

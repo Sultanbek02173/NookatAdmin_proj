@@ -1,4 +1,3 @@
-import React from 'react';
 import calendar from '../../shared/images/homePageImg/calendar.png'
 
 export const MobilCardComponent = ({ image, date, title, description }) => {
