@@ -1,44 +1,17 @@
 import './viewSuggestions.scss'
-import viewingImg from '../../../shared/images/homePageImg/image (5).png'
-import calendar from '../../../shared/images/homePageImg/calendar.png'
 import { CardComponent, MobilCardComponent } from '../../../features'
 import { useMediaQuery } from 'usehooks-ts'
+import { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { fetchMediaNews } from '../../../app/store/reducers/viewSlice'
+
 export const ViewSuggestions = () => {
-    const block = [
-        {
-            id: 0,
-            img: viewingImg,
-            calendar: calendar,
-            date: '16 января 2025 г.',
-            title: '"10 лучших туристических мест Ноокатского района"',
-            description: 'Ноокатская районная государственная администрация продолжает работать над улучшением жизненных условий для жителей района. В рамках текущих инициатив активно ведутся работы по улучшению инфраструктуры, а также обеспечению социальной поддержки для населения. Мы нацелены на повышение качества жизни каждого жителя и открытость в вопросах управления.В ближайшее время ожидаются новые проекты, которые затронут важные аспекты развития региона, включая улучшение здравоохранения, образования и транспортной инфраструктуры. '
-        },
-        {
-            id: 1,
-            img: viewingImg,
-            calendar: calendar,
-            date: '16 января 2025 г.',
-            title: '"10 лучших туристических мест Ноокатского района"',
-            description: 'Ноокатская районная государственная администрация продолжает работать над улучшением жизненных условий для жителей района. В рамках текущих инициатив активно ведутся работы по улучшению инфраструктуры, а также обеспечению социальной поддержки для населения. Мы нацелены на повышение качества жизни каждого жителя и открытость в вопросах управления.В ближайшее время ожидаются новые проекты, которые затронут важные аспекты развития региона, включая улучшение здравоохранения, образования и транспортной инфраструктуры. '
-        },
-        {
-            id: 2,
-            img: viewingImg,
-            calendar: calendar,
-            date: '16 января 2025 г.',
-            title: '"10 лучших туристических мест Ноокатского района"',
-            description: 'Ноокатская районная государственная администрация продолжает работать над улучшением жизненных условий для жителей района. В рамках текущих инициатив активно ведутся работы по улучшению инфраструктуры, а также обеспечению социальной поддержки для населения. Мы нацелены на повышение качества жизни каждого жителя и открытость в вопросах управления.В ближайшее время ожидаются новые проекты, которые затронут важные аспекты развития региона, включая улучшение здравоохранения, образования и транспортной инфраструктуры. '
-        },
-        {
-            id: 3,
-            img: viewingImg,
-            calendar: calendar,
-            date: '16 января 2025 г.',
-            title: '"10 лучших туристических мест Ноокатского района"',
-            description: 'Ноокатская районная государственная администрация продолжает работать над улучшением жизненных условий для жителей района. В рамках текущих инициатив активно ведутся работы по улучшению инфраструктуры, а также обеспечению социальной поддержки для населения. Мы нацелены на повышение качества жизни каждого жителя и открытость в вопросах управления.В ближайшее время ожидаются новые проекты, которые затронут важные аспекты развития региона, включая улучшение здравоохранения, образования и транспортной инфраструктуры. '
-        },
-        
-    ];
+    
+    const dispatch = useDispatch()
+    const { card } = useSelector((state) => state.card)
+    useEffect(() => {
+        dispatch(fetchMediaNews())
+    }, [dispatch])
     const matches = useMediaQuery('(max-width: 576px)')
     
     return (
@@ -46,10 +19,10 @@ export const ViewSuggestions = () => {
             <div className="viewing">
                 <h1 className="viewing-text">предлагаем к просмотру</h1>
                 {
-                    block.map((item) => (
+                    card.map((item) => (
                         <div key={item.id}>
-                            {matches ? <MobilCardComponent block={item}/>  
-                                : <CardComponent block={item}/>}
+                            {matches ? <MobilCardComponent image={item.image_media} date={item.date_media} title={item.title_media} description={item.description_media}/>  
+                                : <CardComponent image={item.image_media} date={item.date_media} title={item.title_media} description={item.description_media}/>}
                         </div>
                     ))  
                }
@@ -57,4 +30,5 @@ export const ViewSuggestions = () => {
         </div>
     );
 }
+
 

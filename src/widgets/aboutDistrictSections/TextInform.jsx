@@ -50,6 +50,7 @@ export const TextInform = ({ currentTitle, currentText, person }) => {
                     ))
                 }
             </div>
+
         </section>
     );
 }

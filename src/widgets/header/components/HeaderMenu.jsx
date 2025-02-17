@@ -25,11 +25,11 @@ export const headerMenu = [
   },
   { name: "НОВОСТИ", path: "/news" },
   {
-    name: "ОБРАЩЕНИЯ ГРАЖДАН", path: 'https://portal.tunduk.kg/public_services/new_message_sed'
+    name: "ОБРАЩЕНИЯ ГРАЖДАН", path: 'https://portal.tunduk.kg/public_services/new_message_sed', target: '_balnk'
   },
   { name: "ПРОЕКТЫ", path: "/projects" },
   { name: "АНТИКОРРУПЦИОННЫЕ МЕРОПРИЯТИЯ", path: "/anti-corruption" },
-  { name: "ГАЛЕРЕЯ", path: "/gallery" },
+  { name: "ГАЛЕРЕЯ", path: "/gallery/new-photo" },
 ];
 
 const HeaderMenu = () => {
@@ -67,7 +67,7 @@ const HeaderMenu = () => {
           onMouseEnter={() => page.subMenu && handleMouseEnter(page.name)}
           onMouseLeave={handleMouseLeave}
         >
-          <NavLink className="link" to={page.path}>
+          <NavLink className="link" to={page.path} target={page?.target}>
             {t(page.name)}
           </NavLink>
 

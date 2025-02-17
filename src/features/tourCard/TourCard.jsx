@@ -5,16 +5,16 @@ export const TourCard = ({ el, openModalWithMap }) => {
     return (
         <div
             style={{
-                backgroundImage: `url(${el.img})`,
+                backgroundImage: `url(${el.image})`,
             }}
             className="photo_card3">
             <div>
-                <h4>{el.name}</h4>
+                <h4>{el.title}</h4>
 
                 <div className="btn_3d">
                     <button
                         className="threeD"
-                        onClick={() => openModalWithMap(el.mapUrl)}>
+                        onClick={() => openModalWithMap(el.link)}>
                         <img src={btn3d} alt="" />
                     </button></div>
             </div>

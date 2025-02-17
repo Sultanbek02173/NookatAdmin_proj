@@ -39,8 +39,8 @@ const HeaderTop = () => {
                     </button>
                     <span>/</span>
                     <button
-                        onClick={() => handleChangeLang('kg')}
-                        className={activeLang === 'kg' ? 'active' : ''}
+                        onClick={() => handleChangeLang('ky')}
+                        className={activeLang === 'ky' ? 'active' : ''}
                     >
                         KG
                     </button>

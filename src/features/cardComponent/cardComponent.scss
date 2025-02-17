@@ -15,6 +15,9 @@
         color: #227DA5;
     }
     &-card{
+        .row{
+            align-items: center;
+        }
         .col-9{
             width: 75%;
             padding: 0 15px;
@@ -31,6 +34,7 @@
     }
     &-img{
         width: 100%;
+        border-radius: 30px;
     }
     &-calendar-img{
         object-fit: contain;
@@ -137,9 +141,9 @@
    .viewing{
         &-card{
             .col-6{
+                width: 50% !important;
                 .row{
                     align-items: center;
-                    flex-wrap: nowrap;
                 }
             }
         }

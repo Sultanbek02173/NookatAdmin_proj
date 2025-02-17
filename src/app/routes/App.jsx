@@ -9,7 +9,7 @@ import {
   HomePage, 
   NewsDetail, 
   NewsPage, 
-  ProjectsPage
+  ProjectsPage,
 } from '../../pages';
 import { Footer, Header } from '../../widgets';
 import { ScrollButton } from '../../entities';

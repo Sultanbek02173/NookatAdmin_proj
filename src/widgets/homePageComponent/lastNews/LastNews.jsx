@@ -1,48 +1,42 @@
-import { NewsCard, TourCard } from '../../../features';
-import threeD from '../../../shared/images/threeD.png';
+import { NewsCard } from '../../../features';
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import './lastNews.scss';
 import { Link } from 'react-router-dom'
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchNews } from '../../../app/store/reducers/newsSlice';
+import i18n from '../../../i18n/i18n';
 
 export const LastNews = () => {
+    
+    const dispatch = useDispatch();
 
-    const threeDd = [
-        {
-            id: 0,
-            img: threeD,
-            description: "Ноокатская районная государственная администрация продолжает работать над улучшением жизненных условий для жителей...",
-            date: '16 января 2025 года',
-        },
-        {
-            id: 1,
-            img: threeD,
-            description: "Ноокатская районная государственная администрация продолжает работать над улучшением жизненных условий для жителей...",
-            date: '16 января 2025 года',
-        },
-        {
-            id: 2,
-            img: threeD,
-            description: "Ноокатская районная государственная администрация продолжает работать над улучшением жизненных условий для жителей...",
-            date: '16 января 2025 года',
-        },
-        {
-            id: 3,
-            img: threeD,
-            description: "Ноокатская районная государственная администрация продолжает работать над улучшением жизненных условий для жителей...",
-            date: '16 января 2025 года',
-        },
-    ]
+    const { news } = useSelector((state) => state.news);
+
+    const handleLanguageChange = () => {
+        dispatch(fetchNews());
+    };
+
+    useEffect(() => {
+        handleLanguageChange();
+
+        i18n.on('languageChanged', handleLanguageChange);
+        return () => {
+            i18n.off('languageChanged', handleLanguageChange);
+        };
+    }, [dispatch]);
+
     return (
         <section className='container lastNews_section'>
             <h2 className='cont_title'>Последние новости</h2>
-            <Swiper 
+            <Swiper
                 className="mySwiper"
                 slidesPerView={2.5}
                 spaceBetween={20}
                 breakpoints={{
                     1024: {
-                      slidesPerView: 2.5,
+                        slidesPerView: 2.5,
                     },
                     768: {
                         slidesPerView: 1.5,
@@ -53,19 +47,17 @@ export const LastNews = () => {
                     0: {
                         slidesPerView: 1
                     }
-                  }}
-
-                >
+                }}>
                 {
-                    threeDd &&
-                    threeDd.map(item => (
+                    news &&
+                    news.map(item => (
                         <SwiperSlide className='sliderItem' key={item.id}>
-                            <Link to={`/news-detail/${item.id}`}><NewsCard item={item}/></Link>
+                            <Link to={`/news-detail/${item.id}`}><NewsCard img={item.image} description={item.description} date={item.date}/></Link>
                         </SwiperSlide>
                     ))
                 }
             </Swiper>
-
+                 
             <Link to={'/news'}><button className='newsLink'>смотреть все новости</button></Link>
         </section>
     );

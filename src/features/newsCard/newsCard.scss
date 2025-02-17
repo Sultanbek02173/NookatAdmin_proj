@@ -2,12 +2,11 @@
     .news_card {
         width: 100%;
         position: relative;
-        img {
+        &_img {
             width: 100%;
             border-radius: 12px;
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
+            height: 325px;
+            object-fit: cover;
     
         }
     
