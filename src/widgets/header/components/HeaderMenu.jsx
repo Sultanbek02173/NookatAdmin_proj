@@ -1,31 +1,32 @@
 import { useState, useEffect, useRef } from "react";
 import { NavLink } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchDistricts } from "../../../app/store/reducers/districts";
+import i18n from "../../../i18n/i18n";
 
 export const headerMenu = [
   { name: "ГЛАВНАЯ", path: "/" },
-  { name: "О РАЙОНЕ", path: "/about-district/1",
-    subMenu: [
-    { name: "Oбщая информация о районе", path: "/about-district/1" },
-    { name: "паспорт района", path: "/about-district/2" },
-    { name: "Айылные аймаки", path: "/aiyl-aimaks" },
-    { name: "Выдающиеся личности района", path: "/about-district/4" },
-    { name: "история района", path: "/about-district/5" },
-    { name: "карта района", path: "/about-district/6" },
-  ], 
-  },
-  
   {
-    name: "АДМИНИСТРАЦИЯ",  path: "/administration/1",
+    name: "О РАЙОНЕ",
+    path: "/about-district/1",
+    subMenu: [],
+  },
+  {
+    name: "АДМИНИСТРАЦИЯ",
+    path: "/administration/1",
     subMenu: [
       { name: "руководители", path: "/administration/1" },
       { name: "структура администрации", path: "/administration/2" },
       { name: "вакансии", path: "/administration/3" },
+      { name: "График приема граждан", path: "/administration/4" },
     ],
   },
   { name: "НОВОСТИ", path: "/news" },
   {
-    name: "ОБРАЩЕНИЯ ГРАЖДАН", path: 'https://portal.tunduk.kg/public_services/new_message_sed', target: '_balnk'
+    name: "ОБРАЩЕНИЯ ГРАЖДАН",
+    path: "https://portal.tunduk.kg/public_services/new_message_sed",
+    target: "_blank",
   },
   { name: "ПРОЕКТЫ", path: "/projects" },
   { name: "АНТИКОРРУПЦИОННЫЕ МЕРОПРИЯТИЯ", path: "/anti-corruption" },
@@ -35,7 +36,40 @@ export const headerMenu = [
 const HeaderMenu = () => {
   const [activeMenu, setActiveMenu] = useState(null);
   const menuRef = useRef(null);
-  const { t } = useTranslation(); 
+  const { t } = useTranslation();
+  const dispatch = useDispatch();
+
+  const { district } = useSelector((state) => state.district);
+
+  const fetchDistrict = () => {
+    dispatch(fetchDistricts());
+  };
+
+  useEffect(() => {
+    fetchDistrict();
+
+    i18n.on("languageChanged", fetchDistrict);
+    return () => {
+      i18n.off("languageChanged", fetchDistrict);
+    };
+  }, [dispatch]);
+
+  const dynamicHeaderMenu = headerMenu.map((item) => {
+    if (item.name === "О РАЙОНЕ") {
+      const staticSubMenu = [{ name: "Айылные аймаки", path: "/aiyl-aimaks" }];
+
+      const dynamicSubMenu = district.map((d) => ({
+        name: d.title,
+        path: `/about-district/${d.id}`,
+      }));
+
+      return {
+        ...item,
+        subMenu: [...dynamicSubMenu, ...staticSubMenu],
+      };
+    }
+    return item;
+  });
 
   const handleMouseEnter = (name) => {
     setActiveMenu(name);
@@ -60,7 +94,7 @@ const HeaderMenu = () => {
 
   return (
     <div className="header_menu" ref={menuRef}>
-      {headerMenu.map((page) => (
+      {dynamicHeaderMenu.map((page) => (
         <div
           key={page.name}
           className="menu_item"
@@ -68,9 +102,8 @@ const HeaderMenu = () => {
           onMouseLeave={handleMouseLeave}
         >
           <NavLink className="link" to={page.path} target={page?.target}>
-            {t(page.name)}
+            <button>{t(page.name)}</button>
           </NavLink>
-
           {page.subMenu && activeMenu === page.name && (
             <div className="dropdown_menu">
               {page.subMenu.map((subPage) => (

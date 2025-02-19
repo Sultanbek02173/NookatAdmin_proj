@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { useSelector } from "react-redux";
 import axiosApi from "../../../shared/api/AxiosApi";
+import axios from "axios";
 
 const initialState = {
   number: 0,
@@ -33,7 +34,7 @@ const countSlice = createSlice({
 
 export const example = createAsyncThunk("example", async () => {
   try {
-    const { data } = axiosApi.get("example");
+    const { data } = axiosApi.get("/passport/vacancies/");
     return data;
   } catch (e) {
     console.error(e);

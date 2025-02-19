@@ -1,13 +1,13 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { getDetailNews, getNews } from "../../../shared/api/requests";
+import { getDetailNews, getNews} from "../../../shared/api/requests";
 
 export const fetchNews = createAsyncThunk("news/allNews", async () => {
-    try {
-      const { data } = await getNews();            
-      return data;
-    } catch (error) {
-      console.error(error);
-    }
+  try {
+    const { data } = await getNews();            
+    return data;
+  } catch (error) {
+    console.error(error);
+  }
 });
 
 
@@ -20,7 +20,6 @@ export const fetchDetailNews = createAsyncThunk("news/detailNews", async (id, th
   }
 });
 
-
 const newsSlice = createSlice({
   name: "news",
   initialState: {
@@ -32,28 +31,28 @@ const newsSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-        .addCase(fetchNews.pending, (state) => {
+      .addCase(fetchNews.pending, (state) => {
         state.isLoading = true;
-    })
-        .addCase(fetchNews.fulfilled, (state, action) => {
+      })
+      .addCase(fetchNews.fulfilled, (state, action) => {
         state.isLoading = false;
         state.news = action.payload;
-    })
-        .addCase(fetchNews.rejected, (state, action) => {
+      })
+      .addCase(fetchNews.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = action.error.message;
-    })
-        .addCase(fetchDetailNews.pending, (state) => {
+      })
+      .addCase(fetchDetailNews.pending, (state) => {
         state.isLoading = true;
-    })
-        .addCase(fetchDetailNews.fulfilled, (state, action) => {
+      })
+      .addCase(fetchDetailNews.fulfilled, (state, action) => {
         state.isLoading = false;
         state.newsDeatil = action.payload;
-    })
-        .addCase(fetchDetailNews.rejected, (state, action) => {
+      })
+      .addCase(fetchDetailNews.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = action.error.message;
-    });
+      });
   },
 });
 

@@ -20,6 +20,14 @@ $white-color: #fff;
 
         }
 
+        nav button{
+            background-color: transparent;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            margin-top: 14px;
+        }
+
         &_logo {
             display: flex;
             align-items: center;

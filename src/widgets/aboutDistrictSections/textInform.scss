@@ -10,9 +10,11 @@
         border-radius: 20px;
 
         img{
+            width: 100%;
+            height: 276px;
+            border-radius: 20px;
             position: absolute;
             object-fit: cover;
-            width: 100%;
         }
     }
     
@@ -20,6 +22,7 @@
         position:relative;
         top: 20px;
         left: 20px;
+        text-transform: uppercase;
     }
     
     .info{
@@ -56,10 +59,14 @@
         
         .info-image{
             padding-bottom: 190px;
+
+            img{
+                height: 200px;
+            }
         }
 
         .info p{
-            font-size: 30px;
+            font-size: 22px;
         }
     }
 

@@ -1,20 +1,37 @@
 import { SliderComponent } from "../../features";
 import { NewsDescription } from "../../widgets";
 import swiperImg from '../../shared/images/adminPage/imageSlide.png';
+import { useEffect } from "react";
+import { useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchDetailNews } from "../../app/store/reducers/newsSlice";
+import i18n from "../../i18n/i18n";
 
 export const NewsDetail = () => { 
-    const images = [
-        {image: swiperImg},
-        {image: swiperImg},
-        {image: swiperImg},
-        {image: swiperImg},
-        {image: swiperImg},
-        {image: swiperImg},
-    ]
+
+    const { id } = useParams();
+    const dispatch = useDispatch();
+    const { newsDeatil } = useSelector((state) => state.news);
+
+    const fetchNewsDetail = () => {
+        dispatch(fetchDetailNews(id))
+    }
+    useEffect(() => {
+        fetchNewsDetail();
+        
+        i18n.on('languageChanged', fetchNewsDetail);
+        return () => {
+            i18n.off('languageChanged', fetchNewsDetail);
+        };
+    }, []);  
+
+    console.log(newsDeatil);
+    
+    
     return (
         <div className="container">
-            <NewsDescription />
-            <SliderComponent images={images} />
+            <NewsDescription news={newsDeatil}/>
+            <SliderComponent images={newsDeatil.img} />
         </div>
     );
 }

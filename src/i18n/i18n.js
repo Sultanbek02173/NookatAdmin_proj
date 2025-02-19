@@ -20,4 +20,15 @@ i18n.use(initReactI18next).init({
     }
 })
 
-export default i18n  
+//     kg: {
+//       translation: kg,
+//     },
+//   },
+//   lng: "ru",
+//   fallbackLng: "ru",
+//   interpolation: {
+//     escapeValue: false,
+//   },
+// });
+
+export default i18n;

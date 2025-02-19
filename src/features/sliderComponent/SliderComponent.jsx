@@ -10,7 +10,8 @@ import './sliderComponent.scss'
 
 export const SliderComponent = ({ images }) => {
   const swiperRef = useRef(null);
-
+  console.log(images);
+  
   useEffect(() => {
     if (swiperRef.current) {
       swiperRef.current.swiper.navigation.init();
@@ -45,7 +46,7 @@ export const SliderComponent = ({ images }) => {
           images.map((item, index) => (
             <SwiperSlide key={index}>
               <div className='slide-img'>
-                <img src={item.image} alt={`Slide ${index}`} />
+                <img src={item} alt={`Slide ${index}`} />
               </div>
             </SwiperSlide>
           ))

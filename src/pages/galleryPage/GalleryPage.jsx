@@ -3,37 +3,47 @@ import "./Gallery.scss";
 import "@fancyapps/ui/dist/fancybox/fancybox.css";
 import { Fancybox } from "@fancyapps/ui";
 import { TourCard } from "../../features";
-import { TourModal } from "../../entities";
+// import { TourModal } from "../../entities";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchNewShapes, fetchArchivalPhotos, fetchOshTour } from "../../app/store/reducers/gallerySlice"; 
-
+import { useTranslation } from "react-i18next";
+import { fetchArchivalPhotos, fetchNewShapes, fetchOshTour } from "../../app/store/reducers/gallerySlice";
 
 const buttons = [
-    { name: "НОВЫЕ ФОТОГРАФИИ" },
-    { name: "3D ТУР" },
-    { name: "АРХИВНЫЕ ФОТОГРАФИИ" },
+    { name: "new-photo" },
+    { name: "3D-tour" },
+    { name: "archive-photos" },
 ];
 
 export const GalleryPage = () => {
 
     const [activeButton, setActiveButton] = useState(buttons[0].name);
     const [currentMapUrl, setCurrentMapUrl] = useState("");
+    const dispatch = useDispatch();
     const {id} = useParams();
+    const { t } = useTranslation()
 
-    const { newShapes, archivalPhotos, oshTour,  } = useSelector((state) => state.gallery);
+    const { newShapes, archivalPhotos, oshTour  } = useSelector((state) => state.gallery);
   
     const handleOnClick = (name) => {
         setActiveButton(name);
     };
 
-    const openModalWithMap = (mapUrl) => {
-        setCurrentMapUrl(mapUrl);
-    };
+    // const openModalWithMap = (mapUrl) => {
+    //     setCurrentMapUrl(mapUrl);
+    // };
 
-    const closeModal = () => {
-        setCurrentMapUrl("");
-    };
+    // const closeModal = () => {
+    //     setCurrentMapUrl("");
+    // };
+
+    useEffect(() => {
+      dispatch(fetchNewShapes());
+      dispatch(fetchArchivalPhotos());
+      dispatch(fetchOshTour());
+    }, [dispatch])
+    
+
     useEffect(() => {
       Fancybox.bind("[data-fancybox]", {});
   
@@ -45,13 +55,13 @@ export const GalleryPage = () => {
 
     useEffect(() => {
         if (id === "new-photo") {
-            setActiveButton("НОВЫЕ ФОТОГРАФИИ");
+            setActiveButton("new-photo");
         } else if (id === "3D-tour") {
-            setActiveButton("3D ТУР");
+            setActiveButton("3D-tour");
         } else if (id === "archive-photos") {
-            setActiveButton("АРХИВНЫЕ ФОТОГРАФИИ");
+            setActiveButton("archive-photos");
         }
-    }, [id]);
+    }, [id]);    
     
       return (
         <div className="gallery">
@@ -63,13 +73,13 @@ export const GalleryPage = () => {
                   className={`gallery_menu_btn ${el.name === activeButton ? "active" : ""}`}
                   key={el.name}
                 >
-                  {el.name}
+                  {t(el.name)}
                 </button>
               ))}
             </div>
     
             <div className="gallery_content">
-              {activeButton === "НОВЫЕ ФОТОГРАФИИ" && (
+              {activeButton === "new-photo" && (
                 <div className="photo_gallery">
                   {newShapes.map((el, index) => (
                     <a key={index} data-fancybox="gallery" href={el.image} className="photo_card">
@@ -79,15 +89,15 @@ export const GalleryPage = () => {
                 </div>
               )}
     
-              {activeButton === "3D ТУР" && (
+              {activeButton === "3D-tour" && (
                 <div className="photo_gallery">
                   {oshTour.map((el, index) => (
-                    <TourCard key={index} el={el} openModalWithMap={openModalWithMap} />
+                    <a href={el.link} target="_blank"><TourCard key={index} el={el} /></a>
                   ))}
                 </div>
               )}
     
-              {activeButton === "АРХИВНЫЕ ФОТОГРАФИИ" && (
+              {activeButton === "archive-photos" && (
                 <div className="photo_gallery">
                   {archivalPhotos.map((el, index) => (
                     <a key={index} data-fancybox="gallery" href={el.image} className="photo_card">
@@ -99,9 +109,9 @@ export const GalleryPage = () => {
             </div>
           </div>
     
-          {currentMapUrl && (
+          {/* {currentMapUrl && (
             <TourModal mapUrl={currentMapUrl} closeModal={closeModal} />
-          )}
+          )} */}
         </div>
       );
     };

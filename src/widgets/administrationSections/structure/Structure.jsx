@@ -1,16 +1,20 @@
-import Str from '../../../shared/images/adminPage/str.png';
+// import Str from '../../../shared/images/adminPage/str.png';
 import '../slide.scss';
 
 
-export function Structure() {
+export function Structure({ structure }) {
   return (
     <div className='container'>
-       <div className="str-con">
-          <div className="title-text" ><h1>структура администрации</h1></div>
-            <div className="image-con">
-              <img src={Str} className='str-image' />
-            </div>     
-       </div>
+      {structure.map((item) => (
+        <div key={item.id} className="str-con">
+          <div className="title-text">
+            <h1>{item.title}</h1>
+          </div>
+          <div className="image-con">
+            <img src={item.image} className='str-image' />
+          </div>
+        </div>
+      ))}
     </div>
   )
 }

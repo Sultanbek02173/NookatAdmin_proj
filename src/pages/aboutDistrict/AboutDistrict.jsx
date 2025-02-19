@@ -1,76 +1,70 @@
 import { useEffect, useState } from "react";
 import { Navigations } from "../../features";
 import { TextInform } from "../../widgets";
-import axios from 'axios';
+import i18n from "../../i18n/i18n";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchDistricts } from "../../app/store/reducers/districts";
 
 export const AboutDistrict = () => {
-    const [selected, setSelected] = useState(1);
+    const [active, setActive] = useState(null);
     const [currentText, setCurrentText] = useState('');
-    const [currentTitle, setCurrentTitle] = useState();
+    const [currentTitle, setCurrentTitle] = useState('');
+    const [link, setLink] = useState('');
+    const [bgImg, setBgImg] = useState('');
+    const [person, setPerson] = useState([]);
+    const dispatch = useDispatch();
 
-    const people = [
-        {
-            id: 1,
-            name: 'Общая информация о районе',
-            apiLink: 'https://adminsite.webtm.ru/ru/api/v1/passport/generalInformation/'
-        },
-        {
-            id: 2,
-            name: 'Паспорт района',
-            apiLink: 'https://adminsite.webtm.ru/ru/api/v1/passport/passport/'
-        },
-        {
-            id: 3,
-            name: 'Выдающиеся личности района',
-            apiLink: 'https://adminsite.webtm.ru/ru/api/v1/3'
-        },
-        {
-            id: 4,
-            name: 'История района',
-            apiLink: 'https://adminsite.webtm.ru/ru/api/v1/passport/History/'
-        },
-        {
-            id: 5,
-            name: 'Карта района',
-            apiLink: 'https://adminsite.webtm.ru/ru/api/v1/passport/map/'
-        },
-    ];
+    const { district } = useSelector((state) => state.district);
+
+    const fetchDistrict = () => {
+        dispatch(fetchDistricts());
+    };
 
     useEffect(() => {
-      console.log(selected)
-      const selectedPerson = people.find(person => person.id === selected);
-      if (selectedPerson) {
-          axios.get(selectedPerson.apiLink)
-              .then((response) => {
-                  setCurrentTitle(selectedPerson.name);
-                  setCurrentText(response.data.description || '');
-                  console.log(response.data)
-              })
-              .catch((error) => {
-                  console.error(error);
-              });
-      }
-  }, [selected]);  
+        fetchDistrict();
 
-    const handleItemClick = (id) => {
-        setSelected(id); 
+        i18n.on('languageChanged', fetchDistrict);
+        return () => {
+            i18n.off('languageChanged', fetchDistrict);
+        };
+    }, [dispatch]);
 
-       
+    useEffect(() => {
+        if (district.length > 0 && active === null) {
+            const firstDistrict = district[0];
+            setActive(firstDistrict.id);
+            handleButtonClick(firstDistrict.id);
+        }
+    }, [district]);
+
+    const handleButtonClick = (id) => {
+        const selectedDistrict = district.find((item) => item.id === id);
+        if (selectedDistrict) {
+            setCurrentTitle(selectedDistrict.title); 
+            setCurrentText(selectedDistrict.description);
+            setPerson(selectedDistrict.person); 
+            setLink(selectedDistrict.link); 
+            setBgImg(selectedDistrict.img);
+        }
     };
+
+    useEffect(() => {
+        if (active !== null) {
+            handleButtonClick(active);
+        }
+    }, [active]);
 
     return (
         <div className="container row app-container">
-            
-            <Navigations selected={selected} setSelected={setSelected} list={people} 
-                onClick={() => handleItemClick(person.id)}
-                style={{ cursor: "pointer", margin: "10px 0" }}
-            />
+            {district.length > 0 && (
+                <>
+                    <Navigations selected={active} setSelected={setActive} list={district} />
 
-            <div className="content">
-                <TextInform currentTitle={currentTitle} currentText={currentText} />
-                <p>{currentText}</p>
-            </div>
+                    <div className="content">
+                        <TextInform bgImg={bgImg} link={link} currentTitle={currentTitle} currentText={currentText} person={person} />
+                    </div>
+                </>
+            )}
         </div>
     );
 };
-                           

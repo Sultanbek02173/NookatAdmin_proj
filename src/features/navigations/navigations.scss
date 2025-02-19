@@ -1,5 +1,5 @@
 .nav-container {
-  width: 30%;
+    width: 30%;
     border: none;
     box-shadow: 0 4px 8px rgba(34, 125, 165, 0.52);
     border-radius: 20px;
@@ -23,6 +23,8 @@
       padding-left: 10px;
       cursor: pointer;
       transition: background-color 0.3s ease;
+      text-transform: uppercase;
+
   
       &:hover {
         background-color: rgba(200, 220, 240, 1);
