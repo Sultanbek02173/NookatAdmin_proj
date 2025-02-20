@@ -1,6 +1,18 @@
-import React, { useState } from "react";
+import { faImage } from "@fortawesome/fontawesome-free-regular";
 import {
-  activeMode,
+  faMinus,
+  faMinusCircle,
+  faVolumeOff,
+} from "@fortawesome/fontawesome-free-solid";
+import {
+  faCircleHalfStroke,
+  faGear,
+  faVolumeHigh,
+} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import {
   activeSpeech,
   darkPictures,
   deactivateMode,
@@ -9,12 +21,13 @@ import {
   hidePictures,
   increaseFontSize,
   setHide,
+  setShow,
   showPictures,
   unplugSpeech,
   useVisually,
 } from "../../app/store/reducers/visually";
 import Modal from "./Modal";
-import { useDispatch } from "react-redux";
+// import faImage from "@fortawesome/fontawesome-free-regular";
 export const VisuallyImpaired = () => {
   const { hide } = useVisually();
   const [modal, setModal] = useState(false);
@@ -31,22 +44,37 @@ export const VisuallyImpaired = () => {
               <button onClick={() => dispatch(increaseFontSize())}>A+</button>
             </div>
           </div>
-          <div className="visually__content">
+          <div className="visually__content" id="visually__content">
             <p>Цвета сайта</p>
             <div>
-              <button onClick={() => dispatch(handleThemeChange("light"))}>
+              <button
+                id="visually__content-light"
+                onClick={() => dispatch(handleThemeChange("light"))}
+              >
                 ц
               </button>
-              <button onClick={() => dispatch(handleThemeChange("dark"))}>
+              <button
+                id="visually__content-dark"
+                onClick={() => dispatch(handleThemeChange("dark"))}
+              >
                 ц
               </button>
-              <button onClick={() => dispatch(handleThemeChange("blue"))}>
+              <button
+                id="visually__content-blue"
+                onClick={() => dispatch(handleThemeChange("blue"))}
+              >
                 ц
               </button>
-              <button onClick={() => dispatch(handleThemeChange("brown"))}>
+              <button
+                id="visually__content-brown"
+                onClick={() => dispatch(handleThemeChange("brown"))}
+              >
                 ц
               </button>
-              <button onClick={() => dispatch(handleThemeChange("green"))}>
+              <button
+                id="visually__content-green"
+                onClick={() => dispatch(handleThemeChange("green"))}
+              >
                 ц
               </button>
             </div>
@@ -55,13 +83,13 @@ export const VisuallyImpaired = () => {
             <p>Изображения</p>
             <div>
               <button onClick={() => dispatch(showPictures())}>
-                включить изображения
+                <FontAwesomeIcon icon={faImage} />
               </button>
               <button onClick={() => dispatch(hidePictures())}>
-                выключить изображения
+                <FontAwesomeIcon icon={faMinusCircle} />
               </button>
               <button onClick={() => dispatch(darkPictures())}>
-                изображения черно-белые
+                <FontAwesomeIcon icon={faCircleHalfStroke} />
               </button>
             </div>
           </div>
@@ -69,26 +97,31 @@ export const VisuallyImpaired = () => {
             <p>Синтез речи</p>
             <div>
               <button onClick={() => dispatch(unplugSpeech())}>
-                выключить речь
+                <FontAwesomeIcon icon={faVolumeOff} />
               </button>
               <button onClick={() => dispatch(activeSpeech())}>
-                включить речь
+                <FontAwesomeIcon icon={faVolumeHigh} />
               </button>
             </div>
           </div>
           <div className="visually__content">
-            <p>Настройки</p>
+            <p>настройки</p>
             <div>
-              <button onClick={() => setModal(!modal)}>настройки</button>
+              <button onClick={() => setModal(!modal)}>
+                <FontAwesomeIcon icon={faGear} />
+              </button>
               <button onClick={() => dispatch(deactivateMode())}>
                 обычная версия
               </button>
-              <button onClick={() => dispatch(setHide())}>закрыть окно</button>
+              <button onClick={() => dispatch(setHide())}>
+                <FontAwesomeIcon icon={faMinus} />
+              </button>
             </div>
           </div>
           {modal && <Modal setModal={setModal} />}
         </div>
       )}
+      {!hide && <button onClick={() => dispatch(setShow())}>показать</button>}
     </React.Fragment>
   );
 };

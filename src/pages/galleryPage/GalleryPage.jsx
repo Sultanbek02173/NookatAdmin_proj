@@ -92,7 +92,7 @@ export const GalleryPage = () => {
               {activeButton === "3D-tour" && (
                 <div className="photo_gallery">
                   {oshTour.map((el, index) => (
-                    <a href={el.link} target="_blank"><TourCard key={index} el={el} /></a>
+                    <TourCard key={index} el={el} />
                   ))}
                 </div>
               )}

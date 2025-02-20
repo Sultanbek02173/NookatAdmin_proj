@@ -9,12 +9,16 @@ import youtubeIcon from "../../../shared/images/youtubeIcon.svg";
 import { useTranslation } from "react-i18next";
 import BurgerMenu from "./BurgerMenu";
 import { useState } from "react";
-import { activeMode, useVisually } from "../../../app/store/reducers/visually";
+import {
+  activeMode,
+  deactivateMode,
+  useVisually,
+} from "../../../app/store/reducers/visually";
 import { useDispatch } from "react-redux";
 
 const HeaderTop = () => {
   const dispatch = useDispatch();
-  const { hide } = useVisually();
+  const { hide, active } = useVisually();
   const { i18n } = useTranslation();
   const [activeLang, setActiveLang] = useState(i18n.language);
 
@@ -33,9 +37,16 @@ const HeaderTop = () => {
       <div className="headerTop_right">
         <img src={locationIcon} alt="Location" />
         <p>ул. Центральная, 45, г. Ноокат</p>
-        <button onClick={() => dispatch(activeMode())}>
-          {hide ? "активация" : "открыть"}
-        </button>
+
+        <div>
+          {!active ? (
+            <button onClick={() => dispatch(activeMode())}>активация</button>
+          ) : (
+            <button onClick={() => dispatch(deactivateMode())}>
+              отключить
+            </button>
+          )}
+        </div>
         <img src={languageIcon} alt="Language" />
         <div className="languageButtons">
           <button
