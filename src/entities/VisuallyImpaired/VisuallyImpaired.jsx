@@ -11,7 +11,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
   activeSpeech,
   darkPictures,
@@ -32,7 +32,7 @@ export const VisuallyImpaired = () => {
   const { hide } = useVisually();
   const [modal, setModal] = useState(false);
   const dispatch = useDispatch();
-
+  
   return (
     <React.Fragment>
       {hide && (

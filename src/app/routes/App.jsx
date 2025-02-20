@@ -13,7 +13,7 @@ import {
 } from "../../pages";
 import { Footer, Header } from "../../widgets";
 import { ScrollButton } from "../../entities";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useVisually } from "../store/reducers/visually";
 import { useEffect } from "react";
 
@@ -120,6 +120,33 @@ function App() {
       );
     };
   }, [theme, letterSpacing, lineSpacing, font, fontSize, picture]);
+
+  // Синтез речи
+  const { speech } = useSelector((state) => state.visually);
+  console.log(speech);
+    
+
+  // Функция для синтеза речи для всего контента страницы
+  const readPageContent = () => {
+    const content = document.body.innerText;
+    const utterance = new SpeechSynthesisUtterance(content);
+    utterance.lang = "ru-RU"; // Установка языка
+    window.speechSynthesis.speak(utterance);
+  };
+
+  // Функция для остановки синтеза речи
+  const stopSpeech = () => {
+    window.speechSynthesis.cancel();
+  };
+
+  useEffect(() => {
+    if (speech) {
+      readPageContent(); // Если синтез речи активен, читаем страницу
+    } else {
+      stopSpeech(); // Если синтез речи деактивирован, останавливаем
+    }
+  }, [speech]);
+  //
 
   return (
     <BrowserRouter>
