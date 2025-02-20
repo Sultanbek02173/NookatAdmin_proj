@@ -20,6 +20,9 @@ export const AntiCorruptionPage = () => {
         };
     }, [])
 
+    console.log(catalogs);
+    
+
     const [index, setIndex] = useState(null);
 
     const changeIndex = (id) => {
@@ -33,16 +36,15 @@ export const AntiCorruptionPage = () => {
     return (
         <div className='container'>
             <div className="viewing_projects">
-                <h1 className="viewing_projects-text">антикоррупционные мероприятия</h1>
+                <h1 className="viewing_projects-text">{catalogs[0]?.title}</h1>
                 {
                     catalogs.map((item) => (
                         <div className='projects-block' key={item.id} onClick={() => changeIndex(item.id)}>
                             <BaseComponents item={item} index={index} changeIndex={changeIndex}/>
                         </div>
-                    ))  
+                    ))
                 }
             </div>
         </div>
     );
 }
-

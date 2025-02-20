@@ -16,8 +16,16 @@ $white-color: #fff;
         h2 {
             font-size: clamp(18px, 2vw, 22px);
             max-width: 200px;
-            font-family: 'Bebas Neue';
+            // font-family: 'Bebas Neue';
 
+        }
+
+        nav button{
+            background-color: transparent;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            margin-top: 14px;
         }
 
         &_logo {

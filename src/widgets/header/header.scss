@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 
 .header {
-  font-family: "Bebas Neue", sans-serif;
+  // font-family: 'Bebas Neue', sans-serif;
   padding-top: 10px;
 
   .headerTop {
@@ -45,7 +45,6 @@
       button {
         color: #227DA5;
         border: none;
-        background: transparent;
         font-size: 19px;
         font-weight: 700;
         cursor: pointer;
@@ -114,24 +113,28 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
+      width: 100%;
       flex-wrap: wrap;
       gap: 10px;
+      line-height: 1em;
+      letter-spacing: 0px;
 
       .menu_item {
         margin: 20px 0;
-
+        width: auto;
       }
 
-      .link {
-        font-family: "Bebas Neue";
+      .link button{
+        font-family: 'SF Pro Display', sans-serif;
         background: #227DA5;
         color: #fff;
-        font-size: 19px;
+        font-size: 13px;
         border: none;
         border-radius: 5px;
-        padding: 15px 32px;
         font-weight: 700;
         line-height: 20px;
+        text-transform: uppercase;
+        padding: 10px 15px;
       }
 
 
@@ -144,7 +147,7 @@
         padding: 0 10px 10px 10px;
         border-radius: 5px;
         z-index: 10;
-        margin-top: 17px;
+        // margin-top: 5px;
 
         .dropdown_link {
           display: block;
@@ -193,7 +196,6 @@
   }
 }
 
-
 @media (max-width: 1200px) {
 
   .header {
@@ -214,8 +216,20 @@
         padding: 20px 0;
       }
 
+      .header_menu {
+        justify-content: start;
+      }
+
 
     }
+  }
+
+  .header .headerBottom .header_menu .link button {
+    font-size: 16px;
+  }
+
+  .header .headerBottom .header_menu .menu_item{
+    margin: 10px 0;
   }
 }
 
@@ -243,6 +257,7 @@
       .burger-menu {
 
         display: flex !important;
+        justify-content: space-between;
         color: #fff;
 
         img {
@@ -315,12 +330,13 @@
       }
 
       .header_menu {
+        justify-content: space-between;
 
         .menu_item {
           width: 45%;
         }
 
-        .link {
+        .link button{
           height: 65px;
           text-align: center;
           display: flex;

@@ -24,11 +24,14 @@ export const NewsDetail = () => {
             i18n.off('languageChanged', fetchNewsDetail);
         };
     }, []);  
+
+    console.log(newsDeatil);
+    
     
     return (
         <div className="container">
             <NewsDescription news={newsDeatil}/>
-            <SliderComponent images={newsDeatil} />
+            <SliderComponent images={newsDeatil.img} />
         </div>
     );
 }

@@ -2,14 +2,13 @@ import { SliderComponent } from '../../features';
 import './aiylAimaksInfo.scss';
 
 export const AiylAimaksInfo = ({ title, text, images }) => {
-    console.log(images);
     
     return (
         <section className="aiyl-con">
             <div className="info">
-                <p className='info-title'>{text}</p>
+                <p className='info-title' >{text}</p>
                 <div className="info-text">
-                    <p className="text">{title}</p>
+                    <p className="text" dangerouslySetInnerHTML={{__html: title}}></p>
                 </div>
 
                 <div className='slider'>

@@ -7,9 +7,11 @@ import { useEffect } from 'react';
 import { scrollToTop } from '../../../shared/hooks/scrollToTop';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchArchivalPhotos, fetchNewShapes, fetchOshTour } from '../../../app/store/reducers/gallerySlice';
+import { useTranslation } from 'react-i18next';
 
 export const Gallery = () => {
     const dispatch = useDispatch();
+    const { t } = useTranslation();
     const { newShapes, archivalPhotos, oshTour,  } = useSelector((state) => state.gallery);
     
     useEffect(() => {
@@ -30,7 +32,7 @@ export const Gallery = () => {
                         }
                         <Link to={`/gallery/new-photo`}>
                             <button onClick={scrollToTop} className="gallery-button gallery-button-start">
-                                <h2 className="gallery-button-text ">новые фотографии</h2>
+                                <h2 className="gallery-button-text ">{t('new-photo')}</h2>
                             </button>
                         </Link>
                     </div>
@@ -42,7 +44,7 @@ export const Gallery = () => {
                         }
                         <Link to={`/gallery/3D-tour`}>
                             <button  onClick={scrollToTop} className="gallery-button center-btn">
-                                <h2 className="gallery-button-text">3D тур</h2>
+                                <h2 className="gallery-button-text">{t('3D-tour')}</h2>
                             </button>
                         </Link>
                     </div>
@@ -54,7 +56,7 @@ export const Gallery = () => {
                         }
                         <Link to={`/gallery/archive-photos`}>
                             <button  onClick={scrollToTop} className="gallery-button end-btn">
-                                <h2 className="gallery-button-text">архивные фотографии</h2>
+                                <h2 className="gallery-button-text">{t('archive-photos')}</h2>
                             </button>
                         </Link>
                     </div>

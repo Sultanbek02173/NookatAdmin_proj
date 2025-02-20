@@ -4,4 +4,3 @@ export { TourCard } from './tourCard/TourCard';
 export { NewsCard } from './newsCard/NewsCard';
 export { Navigations } from './navigations/Navigations';
 export { SliderComponent } from './sliderComponent/SliderComponent';
-export { MobilCardComponent } from './mobilCardComponent/MobilCardComponent';

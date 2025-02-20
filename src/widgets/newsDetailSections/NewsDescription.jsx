@@ -6,7 +6,7 @@ export const NewsDescription = ({ news }) => {
     <div className="container detail_container">
       <div key={news.id} className='contents'>
         <div className="title_text">
-          {news.image && <img src={news?.image_media} alt={news.title} />}
+          {news.image && <img src={news?.image} alt={news.title} />}
           <h1 className='title-h1'>{news.title}</h1>
         </div>
         <div className="row">

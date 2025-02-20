@@ -23,3 +23,8 @@ export const getNews = () => {
 export const getDetailNews = (id) => {
   return axiosApi.get(`/api/v1/news/news/${id}/`);
 }
+
+export const getDestricts = () => {
+  return axiosApi.get('/api/v1/passport/type_information/');
+}
+

@@ -12,11 +12,14 @@ export const TourCard = ({ el, openModalWithMap }) => {
                 <h4>{el.title}</h4>
 
                 <div className="btn_3d">
-                    <button
-                        className="threeD"
-                        onClick={() => openModalWithMap(el.link)}>
-                        <img src={btn3d} alt="" />
-                    </button></div>
+                        <button
+                            className="threeD"
+                            onClick={() => openModalWithMap(el.link)}>
+                    <a href={el.link}>
+                    <img src={btn3d} alt="" />  
+                    </a>
+                        </button>
+                    </div>
             </div>
 
         </div>

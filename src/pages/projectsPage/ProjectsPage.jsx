@@ -30,17 +30,21 @@ export const ProjectsPage = () => {
         } 
 
     }
+    
     return (
         <div className='container'>
             <div className="viewing_projects">
                 <h1 className="viewing_projects-text">проекты</h1>
+                <div className="base-components__parent">
                 {
                     projects.map((item) => (
                         <div className='projects-block' key={item.id} onClick={() => changeIndex(item.id)}>
-                            <BaseComponents item={item} index={index} changeIndex={changeIndex}/>
+                            <BaseComponents  item={item} index={index} changeIndex={changeIndex}/>
                         </div>
                     ))  
                }
+                </div>
+
             </div>
         </div>
     );
