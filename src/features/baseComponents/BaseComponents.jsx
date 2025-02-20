@@ -6,11 +6,11 @@ import secondImg from "./images/stash_data-date-light.png";
 export const BaseComponents = ({ item, index, changeIndex }) => {  
 
   return (
-    <div className="base-components">
+    <div onClick={(e) => {e.stopPropagation()}} className="base-components">
       <div key={item.id} className="base-components__parent-itemGrand">
         <div className="base-components__parent-item">
           <div className="base-components__parent-item-blockOne">
-            <img src={item.img} alt="" />
+            <img src={item.image} alt="" />
           </div>
           <div className="base-components__parent-item-blockTwo">
             <div className="base-components__parent-block">
@@ -23,9 +23,7 @@ export const BaseComponents = ({ item, index, changeIndex }) => {
               <div className="base-components__parent-item-blockTwo-data">
                 <h1>{item.title}</h1>
               </div>
-              <p className="base-components__parent-item-blockTwo-data-default">
-                {item.description}
-              </p>
+              <p className="base-components__parent-item-blockTwo-data-default" dangerouslySetInnerHTML={{__html: item.description}}></p>
             </div>
 
                 {
@@ -42,7 +40,7 @@ export const BaseComponents = ({ item, index, changeIndex }) => {
           </div>
         </div>
 
-        <p className="base-components__parent-itemGrand-description">{item.description}</p>
+        {/* <p className="base-components__parent-itemGrand-description" dangerouslySetInnerHTML={{__html: item.description_detail}}></p> */}
 
         <AnimatePresence>
           {item.id === index && (
@@ -51,8 +49,8 @@ export const BaseComponents = ({ item, index, changeIndex }) => {
               animate={{ opacity: 1, height: "auto" }}  
               exit={{ opacity: 0, height: 0 }}  
               transition={{ duration: 0.4, ease: "easeInOut" }}  
+              dangerouslySetInnerHTML={{__html: item.description_detail}}
             >
-              {item.descriptionDetail}
             </motion.p>
           )}
         </AnimatePresence>
@@ -74,7 +72,7 @@ export const BaseComponents = ({ item, index, changeIndex }) => {
 
 BaseComponents.propTypes = {
   item: PropTypes.shape({
-    img: PropTypes.string,
+    image: PropTypes.string,
     calendar: PropTypes.oneOfType([
       PropTypes.string,
       PropTypes.oneOf([null]),
@@ -85,6 +83,7 @@ BaseComponents.propTypes = {
     ]),
     title: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
+    description_detail: PropTypes.string.isRequired,
     id: PropTypes.number.isRequired,
     descriptionDetail: PropTypes.string.isRequired,
   }).isRequired,

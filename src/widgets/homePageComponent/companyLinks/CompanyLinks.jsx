@@ -1,4 +1,5 @@
 import './companyLinks.scss'
+
 export const CompanyLinks = () => {
     const links = [
         {

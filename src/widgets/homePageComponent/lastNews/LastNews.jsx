@@ -3,7 +3,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import './lastNews.scss';
 import { Link } from 'react-router-dom'
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchNews } from '../../../app/store/reducers/newsSlice';
 import i18n from '../../../i18n/i18n';

@@ -67,9 +67,11 @@ const HeaderMenu = () => {
           onMouseEnter={() => page.subMenu && handleMouseEnter(page.name)}
           onMouseLeave={handleMouseLeave}
         >
-          <NavLink className="link" to={page.path} target={page?.target}>
-            {t(page.name)}
-          </NavLink>
+          <button className="link">
+            <NavLink to={page.path} target={page?.target}>
+              {t(page.name)}
+            </NavLink>
+          </button>
 
           {page.subMenu && activeMenu === page.name && (
             <div className="dropdown_menu">
