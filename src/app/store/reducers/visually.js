@@ -11,7 +11,7 @@ const initialState = {
   lineSpacing: "s",
   font: "s",
   Embedded: true,
-  speech: true,
+  speech: false,
   loading: false,
 };
 

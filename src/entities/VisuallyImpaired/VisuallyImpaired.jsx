@@ -11,7 +11,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import {
   activeSpeech,
   darkPictures,
@@ -27,12 +27,13 @@ import {
   useVisually,
 } from "../../app/store/reducers/visually";
 import Modal from "./Modal";
+
 // import faImage from "@fortawesome/fontawesome-free-regular";
-export const VisuallyImpaired = () => {
+export const VisuallyImpaired = ({ mainTextSpeech }) => {
   const { hide } = useVisually();
   const [modal, setModal] = useState(false);
   const dispatch = useDispatch();
-  
+
   return (
     <React.Fragment>
       {hide && (
@@ -40,8 +41,14 @@ export const VisuallyImpaired = () => {
           <div className="visually__content">
             <p>Размер шрифта</p>
             <div>
-              <button onClick={() => dispatch(decreaseFontSize())}>A-</button>
-              <button onClick={() => dispatch(increaseFontSize())}>A+</button>
+              <button onClick={() => {
+                dispatch(decreaseFontSize())
+                mainTextSpeech('Текст уменьшен')
+              }}>A-</button>
+              <button onClick={() => {
+                dispatch(increaseFontSize())
+                mainTextSpeech('Текст увеличен')
+              }}>A+</button>
             </div>
           </div>
           <div className="visually__content" id="visually__content">
@@ -49,31 +56,46 @@ export const VisuallyImpaired = () => {
             <div>
               <button
                 id="visually__content-light"
-                onClick={() => dispatch(handleThemeChange("light"))}
+                onClick={() => {
+                  dispatch(handleThemeChange("light"));
+                  mainTextSpeech('Цвет сайта черный по белому')
+                }}
               >
                 ц
               </button>
               <button
                 id="visually__content-dark"
-                onClick={() => dispatch(handleThemeChange("dark"))}
+                onClick={() => {
+                  dispatch(handleThemeChange("dark"));
+                  mainTextSpeech('Цвет сайта белый по черному')
+                }}
               >
                 ц
               </button>
               <button
                 id="visually__content-blue"
-                onClick={() => dispatch(handleThemeChange("blue"))}
+                onClick={() => {
+                  dispatch(handleThemeChange("blue"));
+                  mainTextSpeech('Цвет сайта темно-синий по голубому')
+                }}
               >
                 ц
               </button>
               <button
                 id="visually__content-brown"
-                onClick={() => dispatch(handleThemeChange("brown"))}
+                onClick={() => {
+                  dispatch(handleThemeChange("brown"));
+                  mainTextSpeech('Цвет сайта коричневый по бежевому')
+                }}
               >
                 ц
               </button>
               <button
                 id="visually__content-green"
-                onClick={() => dispatch(handleThemeChange("green"))}
+                onClick={() => {
+                  dispatch(handleThemeChange("green"));
+                  mainTextSpeech('Цвет сайта зеленый по темно-коричневому')
+                }}
               >
                 ц
               </button>
@@ -82,13 +104,22 @@ export const VisuallyImpaired = () => {
           <div className="visually__content">
             <p>Изображения</p>
             <div>
-              <button onClick={() => dispatch(showPictures())}>
+              <button onClick={() => {
+                dispatch(showPictures());
+                mainTextSpeech('изображения включены');
+              }}>
                 <FontAwesomeIcon icon={faImage} />
               </button>
-              <button onClick={() => dispatch(hidePictures())}>
+              <button onClick={() => {
+                dispatch(hidePictures())
+                mainTextSpeech('изображения выключены')
+              }}>
                 <FontAwesomeIcon icon={faMinusCircle} />
               </button>
-              <button onClick={() => dispatch(darkPictures())}>
+              <button onClick={() => {
+                dispatch(darkPictures());
+                mainTextSpeech('изображения черно-белые')
+              }}>
                 <FontAwesomeIcon icon={faCircleHalfStroke} />
               </button>
             </div>
@@ -96,10 +127,14 @@ export const VisuallyImpaired = () => {
           <div className="visually__content">
             <p>Синтез речи</p>
             <div>
-              <button onClick={() => dispatch(unplugSpeech())}>
+              <button onClick={() => {
+                dispatch(unplugSpeech())
+              }}>
                 <FontAwesomeIcon icon={faVolumeOff} />
               </button>
-              <button onClick={() => dispatch(activeSpeech())}>
+              <button onClick={() => {
+                dispatch(activeSpeech())
+              }}>
                 <FontAwesomeIcon icon={faVolumeHigh} />
               </button>
             </div>
@@ -110,18 +145,27 @@ export const VisuallyImpaired = () => {
               <button onClick={() => setModal(!modal)}>
                 <FontAwesomeIcon icon={faGear} />
               </button>
-              <button onClick={() => dispatch(deactivateMode())}>
+              <button onClick={() => {
+                dispatch(deactivateMode())
+                mainTextSpeech('Обычная версия сайта')
+              }}>
                 обычная версия
               </button>
-              <button onClick={() => dispatch(setHide())}>
+              <button onClick={() => {
+                dispatch(setHide());
+                mainTextSpeech('Панель скрыт');
+              }}>
                 <FontAwesomeIcon icon={faMinus} />
               </button>
             </div>
           </div>
-          {modal && <Modal setModal={setModal} />}
+          {modal && <Modal mainTextSpeech={mainTextSpeech} setModal={setModal} />}
         </div>
       )}
-      {!hide && <button onClick={() => dispatch(setShow())}>показать</button>}
+      {!hide && <button onClick={() => {
+        dispatch(setShow());
+        mainTextSpeech('панель раскрыт')
+      }}>показать</button>}
     </React.Fragment>
   );
 };

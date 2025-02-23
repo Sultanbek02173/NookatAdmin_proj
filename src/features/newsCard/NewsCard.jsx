@@ -1,5 +1,5 @@
 import './newsCard.scss';
-import btn3d from '../../shared/images/btn3d.svg';
+import { MdArrowOutward } from "react-icons/md";
 
 export const NewsCard = ({img, description, date}) => {
     const truncateText = (text) => {
@@ -12,9 +12,10 @@ export const NewsCard = ({img, description, date}) => {
                 <img className='news_card_img' src={img} alt="" />
                 <div className='button'>
                     <div className='btn_3d'>
-                    <button className="threeD">
-                        <img src={btn3d} alt="" />
-                    </button>
+                        <div className="threeD">
+                            <MdArrowOutward color='white' size={40} />
+
+                        </div>
                     </div>
                 </div>
             </div>

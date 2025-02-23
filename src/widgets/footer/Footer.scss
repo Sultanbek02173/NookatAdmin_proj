@@ -16,7 +16,7 @@ $white-color: #fff;
         h2 {
             font-size: clamp(18px, 2vw, 22px);
             max-width: 200px;
-            font-family: 'Bebas Neue';
+            // font-family: 'Bebas Neue';
 
         }
 
@@ -48,11 +48,11 @@ $white-color: #fff;
 
                 p {
                     font-family: 'SF Pro Display';
-
                     margin: 10px 0;
                     border-bottom: 2px #fff solid;
+                    display: flex;
 
-                    img {
+                    svg  {
                         margin-right: 10px;
                     }
                 }

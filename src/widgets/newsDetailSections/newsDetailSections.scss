@@ -9,6 +9,7 @@
       .title_text {
         position: relative;
         height: 385px;
+        margin-bottom: 20px;
         // width: 100%;
   
         img {
@@ -25,7 +26,7 @@
           text-align: center;
           width: 100%;
           opacity: 1;
-          font-family: 'Bebas Neue', sans-serif;
+          // font-family: 'Bebas Neue', sans-serif;
           font-size: 40px;
           font-weight: 700;
           line-height: 1.5;
@@ -35,7 +36,7 @@
   
       .news-text {
         // display: flex;
-        padding: 20px 15px;
+        // padding: 20px 15px;
         font-family: 'SF Pro Display';
         font-size: 20px;
         font-weight: 400;

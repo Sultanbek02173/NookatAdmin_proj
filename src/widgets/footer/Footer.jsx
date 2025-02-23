@@ -1,11 +1,11 @@
 import logo from "../.././shared/images/logo.png";
 import HeaderMenu from '../header/components/HeaderMenu';
-import instagramIcon from "../.././shared/images/instagramIcon.svg";
-import ffff from "../.././shared/images/ffff.svg";
-import koz from "../.././shared/images/koz.svg";
 import "./Footer.scss"
 import { NavLink } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { FaFacebookF, FaInstagram } from "react-icons/fa";
+import { LiaEyeSolid } from "react-icons/lia";
+import { useSelector } from "react-redux";
 
 const statistics = [
     { label: "Просмотры", value: 124 },
@@ -15,14 +15,15 @@ const statistics = [
 
 export const Footer = () => {
   const { t } = useTranslation(); 
+  const { setting } = useSelector((state) => state.setting);
 
     return (
         <footer className="footer">
           <div className="container">
             <div className="footer_group">
               <div className="footer_group_logo">
-                <img src={logo} alt="Logo" />
-                <h1>НООКАТСКАЯ АДМИНИСТРАЦИЯ</h1>
+                <img src={setting ? setting[0]?.logo : ''} alt="Logo" />
+                <h1>{setting ? setting[0]?.title_logo : ''}</h1>
               </div>
     
               <div className="footer_group_nav">
@@ -44,7 +45,7 @@ export const Footer = () => {
                   <div key={index}>
                     <h4>{t(stat.label)}</h4>
                     <p>
-                      <img src={koz} alt={stat.label} />
+                      <LiaEyeSolid size={20} />
                       {stat.value}
                     </p>
                   </div>
@@ -58,10 +59,15 @@ export const Footer = () => {
                 </h2>
                 <div className="socials">
                   <div>
-                    <img src={instagramIcon} alt="Instagram" />
+                    <a href={setting ? setting[0]?.link_insta : ''} target="_blank">
+                      <FaInstagram color="#227DA5" size={25} />
+                    </a>
                   </div>
                   <div>
-                    <img src={ffff} alt="Facebook" />
+                    <a href={setting ? setting[0]?.link_facebook : ''} target="_blank">
+                      <FaFacebookF color="#227DA5" size={25} />
+                    </a>
+
                   </div>
                 </div>
               </div>

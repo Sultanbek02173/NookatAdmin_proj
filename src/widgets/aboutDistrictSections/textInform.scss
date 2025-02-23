@@ -27,6 +27,10 @@
     
     .info{
         width:100%;
+
+        &-text{
+            margin-bottom: 20px;
+        }
     }
     
     .info p {
@@ -41,8 +45,8 @@
     }   
     
     .info-image p{
-        font-family: 'Bebas Neue';
-        font-size: 44.97px;
+        // font-family: 'Bebas Neue';
+        font-size: 30.97px;
         font-weight: 700;
         line-height: 44.97px;
         text-align: left;

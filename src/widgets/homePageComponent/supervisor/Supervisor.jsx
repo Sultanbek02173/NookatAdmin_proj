@@ -1,5 +1,4 @@
 import './supervisor.scss';
-import surervisor from '../../../shared/images/homePageImg/image.jpg'
 import { useEffect, useState } from 'react';
 import axiosApi from '../../../shared/api/AxiosApi';
 import i18n from '../../../i18n/i18n';

@@ -7,12 +7,15 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchNews } from '../../../app/store/reducers/newsSlice';
 import i18n from '../../../i18n/i18n';
+import { useTranslation } from 'react-i18next';
 
 export const LastNews = () => {
     
     const dispatch = useDispatch();
 
     const { news } = useSelector((state) => state.news);
+    const { setting } = useSelector((state) => state.setting);
+    const { t } = useTranslation();
 
     const handleLanguageChange = () => {
         dispatch(fetchNews());
@@ -29,7 +32,7 @@ export const LastNews = () => {
 
     return (
         <section className='container lastNews_section'>
-            <h2 className='cont_title'>Последние новости</h2>
+            <h2 className='cont_title'>{setting ? setting[0]?.end_news : ''}</h2>
             <Swiper
                 className="mySwiper"
                 slidesPerView={2.5}
@@ -58,7 +61,7 @@ export const LastNews = () => {
                 }
             </Swiper>
                  
-            <Link to={'/news'}><button className='newsLink'>смотреть все новости</button></Link>
+            <Link to={'/news'}><button className='newsLink'>{t('last_news')}</button></Link>
         </section>
     );
 }

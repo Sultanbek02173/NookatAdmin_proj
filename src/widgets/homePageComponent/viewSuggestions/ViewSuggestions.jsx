@@ -8,18 +8,21 @@ export const ViewSuggestions = () => {
     
     const dispatch = useDispatch()
     const { card } = useSelector((state) => state.card)
+    const { setting } = useSelector((state) => state.setting);
     useEffect(() => {
         dispatch(fetchMediaNews())
-    }, [dispatch])
+    }, [dispatch])    
     
     return (
         <div className='container'>
             <div className="viewing">
-                <h1 className="viewing-text">предлагаем к просмотру</h1>
+                <h1 className="viewing-text">{setting ? setting[0]?.title_cmi : ''}</h1>
                 {
                     card.map((item) => (
                         <div key={item.id}>
-                           <CardComponent image={item.image_media} date={item.date_media} title={item.title_media} description={item.description_media}/>
+                            <a href={item.link} target='_blank'>
+                                <CardComponent image={item.image_media} date={item.date_media} title={item.title_media} description={item.description_media}/>
+                            </a>
                         </div>
                     ))  
                }

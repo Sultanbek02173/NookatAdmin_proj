@@ -20,7 +20,6 @@ export const AntiCorruptionPage = () => {
         };
     }, [])
 
-    console.log(catalogs);
     
 
     const [index, setIndex] = useState(null);

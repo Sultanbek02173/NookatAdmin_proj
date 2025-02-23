@@ -1,4 +1,5 @@
-import calendar from '../../shared/images/homePageImg/calendar.png'
+// import calendar from '../../shared/images/homePageImg/calendar.png'
+import { PiCalendarDotsLight } from "react-icons/pi";
 import './cardComponent.scss'
 
 export const CardComponent = ({ image, date, title, description }) => {
@@ -14,7 +15,8 @@ export const CardComponent = ({ image, date, title, description }) => {
                         <div className="base-components__parent-block">
                             {date && (
                                 <div className="base-components__parent-item-blockTwo-data">
-                                    <img src={calendar} alt="icon" />
+                                    {/* <img src={calendar} alt="icon" /> */}
+                                    <PiCalendarDotsLight size={25} color="#227da5" />
                                     <h4>{date}</h4>
                                 </div>
                             )}
@@ -23,8 +25,11 @@ export const CardComponent = ({ image, date, title, description }) => {
                             </div>
                             <p
                                 className="base-components__parent-item-blockTwo-data-default"
-                                dangerouslySetInnerHTML={{ __html: description }}>
-
+                                dangerouslySetInnerHTML={{ __html: 
+                                description.length < 350 ?
+                                description :
+                                description.slice(0, 350) + '...'
+                                 }}>
                             </p>
                         </div>
                     </div>

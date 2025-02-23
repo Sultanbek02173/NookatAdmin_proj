@@ -5,6 +5,7 @@ import './adminestration.scss'
 import { useParams } from "react-router-dom";
 import axiosApi from "../../shared/api/AxiosApi";
 import i18n from "../../i18n/i18n";
+import { useTranslation } from "react-i18next";
 
 
 export const AdministrationPage = () => {
@@ -12,15 +13,16 @@ export const AdministrationPage = () => {
     const [vacancies, setVacancies] = useState([]);
     const [schedule, setSchedule] = useState([]);
     const [structure, setStructure] = useState([]);
+    const {t} = useTranslation()
 
     const { id } = useParams();
     const [selected, setSelected] = useState(1);
 
     const navElements = [
-        { title: 'Руководители', id: 1 },
-        { title: 'Структура администрации', id: 2 },
-        { title: 'Вакансии', id: 3 },
-        { title: 'График приема граждан', id:4 },
+        { title: t('Руководители'), id: 1 },
+        { title: t('Структура администрации'), id: 2 },
+        { title: t('Вакансии'), id: 3 },
+        { title: t('График приема граждан'), id:4 },
     ];
 
     useEffect(() => {
@@ -31,9 +33,6 @@ export const AdministrationPage = () => {
         axiosApi.get(url)
             .then(({ data }) => {
                 setData(data)
-            })
-            .catch((err) => {
-                console.log(err);
             })
     }
 

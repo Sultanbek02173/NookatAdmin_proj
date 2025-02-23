@@ -5,13 +5,13 @@ import { useSelector } from "react-redux";
 
 export const NewsMedia = () => {
 
-    const { card } = useSelector((state) => state.card)
-
+    const { card } = useSelector((state) => state.card);
+    const { setting } = useSelector((state) => state.setting);
     
     return (
         <section className="container">
             <div className="viewingNews">
-                <h1 className="viewing-text">СМИ О НАС</h1>
+                <h1 className="viewing-text">{setting ? setting[0]?.title_cmi : ''}</h1>
                 {
                     card.map((item) => (
                         <a target="_blank" key={item.id} href={`${item.link}`}>

@@ -1,5 +1,5 @@
 import './tourCard.scss';
-import btn3d from '../../shared/images/btn3d.svg';
+import { MdArrowOutward } from 'react-icons/md';
 
 export const TourCard = ({ el, openModalWithMap }) => {
     return (
@@ -15,9 +15,11 @@ export const TourCard = ({ el, openModalWithMap }) => {
                         <button
                             className="threeD"
                             onClick={() => openModalWithMap(el.link)}>
-                    <a href={el.link}>
-                    <img src={btn3d} alt="" />  
-                    </a>
+                                <a href={el.link} target='_blank'>
+                                    {/* <img src={btn3d} alt="" />   */}
+                                    <MdArrowOutward color='white' size={40} />
+
+                                </a>
                         </button>
                     </div>
             </div>

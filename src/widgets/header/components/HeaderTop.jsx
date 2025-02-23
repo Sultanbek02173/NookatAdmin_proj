@@ -1,53 +1,72 @@
-import logo from "../../../shared/images/logo.png";
-import locationIcon from "../../../shared/images/locationIcon.svg";
-import languageIcon from "../../../shared/images/languageIcon.svg";
-import phoneIcon from "../../../shared/images/phoneIcon.svg";
-import instagramIcon from "../../../shared/images/instagramIcon.svg";
-import telegramIcon from "../../../shared/images/telegramIcon.svg";
-import whatsappIcon from "../../../shared/images/whatsappIcon.svg";
-import youtubeIcon from "../../../shared/images/youtubeIcon.svg";
+import { FaInstagram, FaPhoneAlt, FaTelegramPlane, FaYoutube } from "react-icons/fa";
+import { IoLogoWhatsapp } from "react-icons/io";
+import { FaLocationDot } from "react-icons/fa6";
+import { MdLanguage } from "react-icons/md";
+import { LiaEyeSlashSolid, LiaEyeSolid } from "react-icons/lia";
 import { useTranslation } from "react-i18next";
 import BurgerMenu from "./BurgerMenu";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   activeMode,
   deactivateMode,
   useVisually,
 } from "../../../app/store/reducers/visually";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchSettings } from "../../../app/store/reducers/settingsSlice";
 
-const HeaderTop = () => {
+const HeaderTop = ({mainTextSpeech}) => {
   const dispatch = useDispatch();
-  const { hide, active } = useVisually();
+  const { active } = useVisually();
   const { i18n } = useTranslation();
   const [activeLang, setActiveLang] = useState(i18n.language);
+
+  const { setting } = useSelector((state) => state.setting);
 
   const handleChangeLang = (lang) => {
     i18n.changeLanguage(lang);
     setActiveLang(lang);
   };
 
+  const getGlobalSettings = () => {
+    dispatch(fetchSettings());
+  }
+
+  useEffect(() => {
+    getGlobalSettings();
+
+    i18n.on('languageChanged', getGlobalSettings)
+    return () => {
+        i18n.off('languageChanged', getGlobalSettings);
+    }
+  }, [])  
+
   return (
     <div className="headerTop">
       <div className="headerTop_left">
-        <img src={logo} alt="Logo" />
-        <h1>НООКАТСКАЯ АДМИНИСТРАЦИЯ</h1>
+        <img src={setting ? setting[0]?.logo : ''} alt="Logo" />
+        <h1>{setting ? setting[0]?.title_logo : ''}</h1>
       </div>
       <BurgerMenu />
       <div className="headerTop_right">
-        <img src={locationIcon} alt="Location" />
-        <p>ул. Центральная, 45, г. Ноокат</p>
+        <a href={setting ? setting[0]?.location : ''} target="_blank"><FaLocationDot size={25} /></a>
+        <a href={setting ? setting[0]?.location : ''} target="_blank"><p>ул. Центральная, 45, г. Ноокат</p></a>
 
         <div>
           {!active ? (
-            <button onClick={() => dispatch(activeMode())}>активация</button>
+            <button className="activeBtn" onClick={() => {
+              dispatch(activeMode())
+              mainTextSpeech('Режим для слабозрячих включен');
+            }}><LiaEyeSolid size={20} /></button>
           ) : (
-            <button onClick={() => dispatch(deactivateMode())}>
-              отключить
+            <button className="activeBtn" onClick={() => {
+              dispatch(deactivateMode());
+              mainTextSpeech('Режим для слабозрячих выключен');
+            }}>
+              <LiaEyeSlashSolid />
             </button>
           )}
         </div>
-        <img src={languageIcon} alt="Language" />
+        <MdLanguage size={25} />
         <div className="languageButtons">
           <button
             onClick={() => handleChangeLang("ru")}
@@ -64,28 +83,31 @@ const HeaderTop = () => {
           </button>
         </div>
 
-        <img src={phoneIcon} alt="Phone" />
-        <p>+996 995 898 977</p>
+        <FaPhoneAlt />
+        <a href={`tel:${setting ? setting[0]?.phone : ''}`} target="_blank">
+          <p>{setting ? setting[0]?.phone : ''}</p>
+        </a>
 
         <div className="socials">
-          <a href="#">
+          <a href={setting ? setting[0]?.link_insta : ''} target="_blank">
             <div>
-              <img src={instagramIcon} alt="Instagram" />
+              <FaInstagram />
+
             </div>
           </a>
-          <a href="#">
+          <a href={setting ? setting[0]?.link_telegram : ''} target="_blank">
             <div>
-              <img src={telegramIcon} alt="Telegram" />
+                <FaTelegramPlane />
             </div>
           </a>
-          <a href="#">
+          <a href={`https://wa.me/${setting ? setting[0]?.link_watapp : ''}`} target="_blank">
             <div>
-              <img src={whatsappIcon} alt="WhatsApp" />
+              <IoLogoWhatsapp />
             </div>
           </a>
-          <a href="#">
+          <a href={setting ? setting[0]?.link_youtube : ''} target="_blank">
             <div>
-              <img src={youtubeIcon} alt="YouTube" />
+              <FaYoutube />
             </div>
           </a>
         </div>

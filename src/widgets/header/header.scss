@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 
 .header {
-  font-family: 'Bebas Neue', sans-serif;
+  // font-family: 'Bebas Neue', sans-serif;
   padding-top: 10px;
 
   .headerTop {
@@ -42,15 +42,24 @@
     &_right {
       color: #227DA5;
 
+      .activeBtn{
+        background-color: #227DA5;
+        color: #fff;
+        padding: 10px;
+        padding-bottom: 5px;
+        margin: 0 20px;
+      }
+
       button {
         color: #227DA5;
         border: none;
         font-size: 19px;
         font-weight: 700;
         cursor: pointer;
-        padding: 2px 8px;
         margin: 5px;
+        border-radius: 10px;
         transition: all .3s;
+        padding: 7px;
       }
 
       span {
@@ -58,10 +67,14 @@
         font-size: 19px;
         font-weight: 700;
       }
+      .languageButtons{
+        margin: 0 10px;
+      }
       .languageButtons button.active {
         border: 1px solid #227da5;
         background-color: #227da5;
         color: #fff;
+        border-radius: 10px;
       
     }
     
@@ -125,16 +138,16 @@
       }
 
       .link button{
-        font-family: 'Bebas Neue', sans-serif;
+        font-family: 'SF Pro Display', sans-serif;
         background: #227DA5;
         color: #fff;
-        font-size: 17px;
+        font-size: 13px;
         border: none;
         border-radius: 5px;
         font-weight: 700;
         line-height: 20px;
         text-transform: uppercase;
-        padding: 10px 20px;
+        padding: 10px 15px;
       }
 
 
@@ -227,6 +240,10 @@
   .header .headerBottom .header_menu .link button {
     font-size: 16px;
   }
+
+  .header .headerBottom .header_menu .menu_item{
+    margin: 10px 0;
+  }
 }
 
 @media (max-width: 768px) {
@@ -296,12 +313,13 @@
           background: #fff;
           width: 130px;
           margin-top: 10px;
+          padding: 10px;
 
           div {
             background: #227DA5;
 
-            img {
-              margin-right: 0;
+            a {
+              margin-top: 5px;
             }
 
           }

@@ -4,13 +4,11 @@ import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import { Pagination, Navigation } from 'swiper/modules';
 import { useEffect, useRef } from 'react';
-import arrowRight from '../../shared/images/arrowRight.svg'
-import arrowLeft from '../../shared/images/arrowLeft.svg'
 import './sliderComponent.scss'
+import { IoIosArrowRoundBack, IoIosArrowRoundForward } from 'react-icons/io';
 
 export const SliderComponent = ({ images }) => {
   const swiperRef = useRef(null);
-  console.log(images);
   
   useEffect(() => {
     if (swiperRef.current) {
@@ -54,8 +52,8 @@ export const SliderComponent = ({ images }) => {
       </Swiper>
 
         <div className='buttons'>
-          <button className="custom_prev_button"><img src={arrowLeft} alt="" /></button>
-          <button className="custom_next_button"><img src={arrowRight} alt="" /></button>
+          <button className="custom_prev_button"><IoIosArrowRoundBack color='#fff' /></button>
+          <button className="custom_next_button"><IoIosArrowRoundForward color='#fff' /></button>
         </div>
       
     </div>

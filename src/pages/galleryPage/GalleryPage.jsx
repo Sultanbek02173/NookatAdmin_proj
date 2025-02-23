@@ -18,7 +18,7 @@ const buttons = [
 export const GalleryPage = () => {
 
     const [activeButton, setActiveButton] = useState(buttons[0].name);
-    const [currentMapUrl, setCurrentMapUrl] = useState("");
+    // const [currentMapUrl, setCurrentMapUrl] = useState("");
     const dispatch = useDispatch();
     const {id} = useParams();
     const { t } = useTranslation()
