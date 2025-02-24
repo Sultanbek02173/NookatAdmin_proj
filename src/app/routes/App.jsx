@@ -59,6 +59,7 @@ function App() {
     },
   ];
 
+  const dispatch = useDispatch();
   const { font, theme, letterSpacing, lineSpacing, fontSize, picture } = useVisually();
   
   useEffect(() => {
@@ -145,29 +146,34 @@ function App() {
 
   const { setting } = useSelector((state) => state.setting);
 
-
+  const getGlobalSettings = () => {
+    dispatch(fetchSettings());
+  };
 
   useEffect(() => {
     const updateGlobalSettings = async () => {
       if (setting && setting.length > 0) {
-        const set = setting[0];
-        document.title = set.title_logo; 
+        const set = setting[0]; // Берем первый элемент массива setting
+        document.title = set.title_logo; // Обновляем title
 
         const favicon = document.getElementById('favicon');
-        if (favicon && set.logo) {
-          favicon.href = set.logo; 
+        if (favicon && set.logo) { // Используем set.logo, если оно существует
+          favicon.href = set.logo; // Обновляем favicon
         }
       }
     };
 
+    // Вызываем функцию для обновления настроек
     updateGlobalSettings();
 
+    // Подписываемся на событие смены языка
     i18n.on('languageChanged', updateGlobalSettings);
 
+    // Отписываемся от события при размонтировании компонента
     return () => {
       i18n.off('languageChanged', updateGlobalSettings);
     };
-  }, [setting]);
+  }, [setting]); // Добавляем setting в зависимости, чтобы обновлять настройки при его изменении
 
 
   return (

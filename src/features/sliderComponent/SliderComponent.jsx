@@ -40,8 +40,8 @@ export const SliderComponent = ({ images }) => {
         }}
       >
         {
-          images.img &&
-          images.img?.map((item, index) => (
+          images &&
+          images.map((item, index) => (
             <SwiperSlide key={index}>
               <div className='slide-img'>
                 <img src={item} alt={`Slide ${index}`} />

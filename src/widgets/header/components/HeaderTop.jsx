@@ -49,7 +49,7 @@ const HeaderTop = ({mainTextSpeech}) => {
       <BurgerMenu />
       <div className="headerTop_right">
         <a href={setting ? setting[0]?.location : ''} target="_blank"><FaLocationDot size={25} /></a>
-        <a href={setting ? setting[0]?.location : ''} target="_blank"><p>ул. Центральная, 45, г. Ноокат</p></a>
+        <a href={setting ? setting[0]?.location : ''} target="_blank"><p>{setting ? setting[0]?.location_name : ''}</p></a>
 
         <div>
           {!active ? (
