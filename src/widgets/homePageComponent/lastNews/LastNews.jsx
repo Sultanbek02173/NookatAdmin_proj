@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchNews } from '../../../app/store/reducers/newsSlice';
 import i18n from '../../../i18n/i18n';
 import { useTranslation } from 'react-i18next';
+import { scrollToTop } from '../../../shared';
 
 export const LastNews = () => {
     
@@ -55,13 +56,19 @@ export const LastNews = () => {
                     news &&
                     news.map(item => (
                         <SwiperSlide className='sliderItem' key={item.id}>
-                            <Link to={`/news-detail/${item.id}`}><NewsCard img={item.image} description={item.description} date={item.date}/></Link>
+                            <Link to={`/news-detail/${item.id}`}>
+                                <NewsCard 
+                                    img={item.image} 
+                                    description={item.description} 
+                                    date={item.date}
+                                />
+                            </Link>
                         </SwiperSlide>
                     ))
                 }
             </Swiper>
                  
-            <Link to={'/news'}><button className='newsLink'>{t('last_news')}</button></Link>
+            <Link to={'/news'}><button onClick={scrollToTop} className='newsLink'>{t('last_news')}</button></Link>
         </section>
     );
 }

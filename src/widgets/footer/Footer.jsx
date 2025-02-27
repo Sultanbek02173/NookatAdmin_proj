@@ -22,7 +22,7 @@ export const Footer = () => {
           <div className="container">
             <div className="footer_group">
               <div className="footer_group_logo">
-                <img src={setting ? setting[0]?.logo : ''} alt="Logo" />
+                <img src='https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Emblem_of_Kyrgyzstan.svg/1200px-Emblem_of_Kyrgyzstan.svg.png' alt="Logo" />
                 <h1>{setting ? setting[0]?.title_logo : ''}</h1>
               </div>
     
@@ -32,7 +32,7 @@ export const Footer = () => {
                   </h2>
                 <nav>
                   <HeaderMenu />
-                  <NavLink to="/aboutsmm" className="link">
+                  <NavLink to="/news#NewsMedia" className="link">
                     {t("СМИ о нас")}
 
                   </NavLink>

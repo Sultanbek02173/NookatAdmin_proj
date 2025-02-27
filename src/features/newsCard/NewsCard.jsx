@@ -1,3 +1,4 @@
+import { scrollToTop } from '../../shared';
 import './newsCard.scss';
 import { MdArrowOutward } from "react-icons/md";
 
@@ -7,14 +8,13 @@ export const NewsCard = ({img, description, date}) => {
     };
 
     return (
-        <div className='news_cont'>
+        <div className='news_cont' onClick={scrollToTop}>
             <div className="news_card">
                 <img className='news_card_img' src={img} alt="" />
                 <div className='button'>
                     <div className='btn_3d'>
                         <div className="threeD">
                             <MdArrowOutward color='white' size={40} />
-
                         </div>
                     </div>
                 </div>

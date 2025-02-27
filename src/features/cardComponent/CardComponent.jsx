@@ -1,11 +1,12 @@
 // import calendar from '../../shared/images/homePageImg/calendar.png'
 import { PiCalendarDotsLight } from "react-icons/pi";
 import './cardComponent.scss'
+import { scrollToTop } from "../../shared";
 
 export const CardComponent = ({ image, date, title, description }) => {
 
     return (
-        <div className="base-components">
+        <div className="base-components" onClick={scrollToTop}>
             <div className="base-components__parent-itemGrand">
                 <div className="base-components__parent-item">
                     <div className="base-components__parent-item-blockOne">
