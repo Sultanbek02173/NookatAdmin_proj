@@ -1,6 +1,5 @@
 import { SliderComponent } from "../../features";
 import { NewsDescription } from "../../widgets";
-import swiperImg from '../../shared/images/adminPage/imageSlide.png';
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -14,7 +13,7 @@ export const NewsDetail = () => {
     const { newsDeatil } = useSelector((state) => state.news);
 
     const fetchNewsDetail = () => {
-        dispatch(fetchDetailNews(id))
+        dispatch(fetchDetailNews(+id))
     }
     useEffect(() => {
         fetchNewsDetail();
@@ -25,13 +24,12 @@ export const NewsDetail = () => {
         };
     }, []);  
 
-    console.log(newsDeatil);
     
     
     return (
         <div className="container">
             <NewsDescription news={newsDeatil}/>
-            <SliderComponent images={newsDeatil.img} />
+            <SliderComponent images={newsDeatil?.img} />
         </div>
     );
 }

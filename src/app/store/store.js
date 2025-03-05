@@ -5,6 +5,7 @@ import { viewCardReducer } from "./reducers/viewSlice";
 import { newsReducer } from "./reducers/newsSlice";
 import visuallyReducer from "./reducers/visually";
 import { districtSliceReducer } from "./reducers/districts";
+import { settingReducer } from "./reducers/settingsSlice";
 
 export const store = configureStore({
   reducer: {
@@ -16,5 +17,6 @@ export const store = configureStore({
     card: viewCardReducer, 
     news: newsReducer,
     district: districtSliceReducer,
+    setting: settingReducer,
   },
 });

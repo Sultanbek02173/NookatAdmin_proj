@@ -10,7 +10,6 @@ export const fetchNewShapes = createAsyncThunk(
   "gallery/fetchNewShapes",
   async () => {
     const { data } = await getGalleryNewShapes(); 
-    // console.log("NewS-----", data); 
 
     return data;
   }
@@ -20,7 +19,6 @@ export const fetchOshTour = createAsyncThunk(
   "gallery/fetchOshTour",
   async () => {
     const { data } = await getGalleryOshTour(); 
-    // console.log("3d-----", data); 
 
     return data;
   }
@@ -29,7 +27,6 @@ export const fetchArchivalPhotos = createAsyncThunk(
     "gallery/fetchArchivalPhotos",
     async () => {
       const { data } = await getGalleryArchivalPhotos();
-      // console.log("Archival-----:", data); 
 
       return data;
     }

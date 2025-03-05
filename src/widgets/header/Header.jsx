@@ -6,13 +6,19 @@ import { useVisually } from "../../app/store/reducers/visually";
 
 export const Header = () => {
   const { active } = useVisually();
-  // console.log(1);
+
+  const mainTextSpeech = (text) => {
+        const talk = new SpeechSynthesisUtterance();
+        talk.lang = 'ru-RU';
+        talk.text = text;
+        window.speechSynthesis.speak(talk);
+    };
 
   return (
     <header className="header">
       <div className="container">
-        <HeaderTop />
-        {active && <VisuallyImpaired />}
+        <HeaderTop mainTextSpeech={mainTextSpeech}/>
+        {active && <VisuallyImpaired mainTextSpeech={mainTextSpeech} />}
         <HeaderBottom />
       </div>
     </header>

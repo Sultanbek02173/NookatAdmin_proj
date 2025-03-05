@@ -4,14 +4,11 @@ import secondImg from "./images/stash_data-date-light.png";
 import { useState } from "react";
 
 export const BaseComponents = ({ item, index, changeIndex, img }) => {
-  const [isAnimating, setIsAnimating] = useState(false); // Для предотвращения двойной анимации
+  const [isAnimating, setIsAnimating] = useState(false);
 
   const handleToggle = () => {
-    if (!isAnimating) {
-      setIsAnimating(true);
-      changeIndex(item.id);
-      setTimeout(() => setIsAnimating(false), 500); // Ждём завершения анимации
-    }
+    setIsAnimating(!isAnimating);
+    changeIndex(item.id);
   };
 
   return (
@@ -34,14 +31,18 @@ export const BaseComponents = ({ item, index, changeIndex, img }) => {
               </div>
               <p
                 className="base-components__parent-item-blockTwo-data-default"
-                dangerouslySetInnerHTML={{ __html: item.description }}>
+                dangerouslySetInnerHTML={{ __html: 
+                  item.description.length < 350 || isAnimating ?
+                  item.description :
+                  item.description.slice(0, 350) + '...'
+                }}>
               </p>
             </div>
           </div>
           {item.id !== index ? (
             <button
               className="base-components__parent-itemGrand-button"
-              onClick={handleToggle} // Используем новый обработчик
+              onClick={handleToggle}
             >
               Подробнее
             </button>
@@ -57,7 +58,7 @@ export const BaseComponents = ({ item, index, changeIndex, img }) => {
               initial={{ height: 0 }}
               animate={{ height: "auto" }}
               exit={{ height: 0 }}
-              transition={{ duration: 0.5 }}
+              transition={{ all: 0.5 }}
             >
               <p className="hidet-text" dangerouslySetInnerHTML={{ __html: item.description_detail }}></p>
             </motion.div>

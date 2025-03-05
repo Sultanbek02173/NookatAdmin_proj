@@ -1,7 +1,4 @@
 import './gallery.scss'
-import imgCol1 from '../../../shared/images/homePageImg/image (6).png'
-import imgCol2 from '../../../shared/images/homePageImg/image (7).png'
-import imgCol3 from '../../../shared/images/homePageImg/image (8).png'
 import { Link } from 'react-router-dom';
 import { useEffect } from 'react';
 import { scrollToTop } from '../../../shared/hooks/scrollToTop';
@@ -13,6 +10,7 @@ export const Gallery = () => {
     const dispatch = useDispatch();
     const { t } = useTranslation();
     const { newShapes, archivalPhotos, oshTour,  } = useSelector((state) => state.gallery);
+    const { setting } = useSelector((state) => state.setting);
     
     useEffect(() => {
         dispatch(fetchNewShapes());
@@ -22,7 +20,7 @@ export const Gallery = () => {
     return (
         <div className='container'>
             <div className="gallery">
-                <h1 className="gallery-text">галерея</h1>
+                <h1 className="gallery-text">{setting ? setting[0]?.gallery : ''}</h1>
                 <div className="row">
                     <div className="col-4">
                         {

@@ -1,3 +1,6 @@
+
+
+
 body * {
   transition: none;
 }
@@ -82,7 +85,7 @@ body * {
     &-blockTwo {
       width: 70%;
       position: relative;
-      padding-bottom: 40px;
+      // padding-bottom: 40px;
       &-data {
         display: flex;
         align-items: center;
@@ -350,9 +353,9 @@ body * {
           display: none;
         }
         h1 {
-          font-size: 32px;
+          font-size: 25px;
           font-weight: 700;
-          line-height: 32px;
+          line-height: 25px;
           text-align: left;
           text-underline-position: from-font;
           text-decoration-skip-ink: none;
@@ -362,6 +365,9 @@ body * {
     }
   }
 }
+
+
+
 @media (max-width: 576px) {
   .base-components__parent {
     &-block {
@@ -384,7 +390,7 @@ body * {
     &-item {
       &-blockOne {
         width: 303px;
-        height: 193px;
+        height: 184px;
         img {
           width: 100%;
           height: 100%;
@@ -406,121 +412,76 @@ body * {
           display: none;
         }
         h1 {
-          font-size: 32px;
+          font-size: 25px;
           font-weight: 700;
-          line-height: 32px;
+          line-height: 25px;
           text-align: left;
           text-underline-position: from-font;
           text-decoration-skip-ink: none;
           color: #227da5;
+          width: 100%;
+          max-width: 100%;
+          white-space: normal;
+          word-wrap: break-word;
         }
+        
       }
     }
   }
 }
-
-@media (max-width: 430px) {
+@media (max-width: 431px) {
   .base-components__parent {
     gap: 10px;
+
     &-block {
       justify-content: space-between;
     }
+
     &-itemGrand {
       padding: 30px 20px;
+
       p {
-        font-family: SF Pro Display;
         font-size: 18px;
         font-style: italic;
         font-weight: 300;
         line-height: 21.48px;
-        padding: 0;
         text-align: left;
         text-underline-position: from-font;
         text-decoration-skip-ink: none;
+        padding: 0;
       }
+
       &-description {
         display: block;
         margin-top: 30px;
       }
     }
-    &-item {
-      gap: 27px;
-      &-blockOne {
-        width: 75%;
-        height: 175px;
-        img {
-          width: 100%;
-          height: 100%;
-          border-radius: 20px;
-        }
-      }
-      &-blockTwo {
-        &-data {
-          h4 {
-            font-size: 18px;
-            font-weight: 400;
-            line-height: 21.48px;
-            text-align: left;
-            text-underline-position: from-font;
-            text-decoration-skip-ink: none;
-          }
-        }
-        &-data-default {
-          display: none;
-        }
-        h1 {
-          font-size: 21px;
-          font-weight: 700;
-          line-height: 21px;
-          text-align: left;
-          text-underline-position: from-font;
-          text-decoration-skip-ink: none;
-          color: #227da5;
-        }
-      }
-    }
-  }
-}
 
-@media (max-width: 360px) {
-  .base-components__parent {
-    gap: 10px;
-    &-block {
-      justify-content: space-between;
-    }
-    &-itemGrand {
-      padding: 30px 20px;
-      p {
-        font-family: SF Pro Display;
-        font-size: 18px;
-        font-style: italic;
-        font-weight: 300;
-        line-height: 21.48px;
-        padding: 0;
-        text-align: left;
-        text-underline-position: from-font;
-        text-decoration-skip-ink: none;
-      }
-      &-description {
-        display: block;
-        margin-top: 30px;
-      }
-    }
     &-item {
-      gap: 27px;
+      gap: 17px;
+
       &-blockOne {
-        width: 85%;
-        height: 150px;
+        width: 50%;  
+        height: 140px; 
+
         img {
-          width: 100%;
-          height: 100%;
+          width: 100%;  /* Ширина изображения — 100% от родительского блока */
+          height: 100%;  /* Высота изображения — 100% от родительского блока */
+          object-fit: cover;  /* Обеспечивает сохранение пропорций изображения */
           border-radius: 20px;
         }
       }
+
       &-blockTwo {
+        width: 50%;  
+        h1 {
+          font-size: 19px;
+          line-height: 19px;
+        }
+
         &-data {
           h4 {
-            font-size: 18px;
+            font-size: 17px;
             font-weight: 400;
             line-height: 21.48px;
             text-align: left;
@@ -528,17 +489,9 @@ body * {
             text-decoration-skip-ink: none;
           }
         }
+
         &-data-default {
           display: none;
-        }
-        h1 {
-          font-size: 21px;
-          font-weight: 700;
-          line-height: 21px;
-          text-align: left;
-          text-underline-position: from-font;
-          text-decoration-skip-ink: none;
-          color: #227da5;
         }
       }
     }
@@ -550,10 +503,11 @@ body * {
     &-block {
       justify-content: space-between;
     }
+
     &-itemGrand {
       padding: 30px 20px;
+
       &-button {
-        font-family: SF Pro Display;
         font-size: 19.52px;
         font-style: italic;
         font-weight: 500;
@@ -564,6 +518,7 @@ body * {
         text-underline-position: from-font;
         text-decoration-skip-ink: none;
       }
+
       p {
         font-size: 16px;
         font-style: italic;
@@ -573,23 +528,30 @@ body * {
         text-underline-position: from-font;
         text-decoration-skip-ink: none;
       }
+
       &-description {
         display: block;
         margin-top: 15px;
       }
     }
+
     &-item {
       gap: 27px;
+
       &-blockOne {
-        width: 430px;
-        height: 130px;
+        width: 50%;  
+        height: 115px;
+
         img {
           width: 100%;
           height: 100%;
+          object-fit: cover;  
           border-radius: 20px;
         }
       }
+
       &-blockTwo {
+        width: 50%;  /* Ширина 50% */
         &-data {
           h4 {
             font-size: 16px;
@@ -600,17 +562,18 @@ body * {
             text-decoration-skip-ink: none;
           }
         }
+
         &-data-default {
           display: none;
         }
+
         h1 {
-          font-size: 20px;
+          font-size: 14px;
           font-weight: 700;
-          line-height: 20px;
+          line-height: 14px;
           text-align: left;
           text-underline-position: from-font;
           text-decoration-skip-ink: none;
-          color: #227da5;
         }
       }
     }

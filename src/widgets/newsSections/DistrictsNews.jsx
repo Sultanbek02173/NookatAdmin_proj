@@ -6,11 +6,12 @@ import { useSelector } from "react-redux";
 export const DistrictsNews = () => {
     
     const { news } = useSelector((state) => state.news);
+    const { setting } = useSelector((state) => state.setting);
     
     return (
         <section className="container">
             <div className="viewingNews">
-                <h1 className="viewing-text">новости ноокатского района</h1>
+                <h1 className="viewing-text">{setting ? setting[0]?.news_nookat : ''}</h1>
                 {
                     news.map((item) => (
                         <Link key={item.id} to={`/news-detail/${item.id}`}>

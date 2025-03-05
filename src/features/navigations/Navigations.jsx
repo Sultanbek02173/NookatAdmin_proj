@@ -2,7 +2,6 @@ import { Link } from 'react-router-dom';
 import './navigations.scss';
 
 export const Navigations = ({ list, selected, setSelected }) => {
-
     return (
         <aside className="nav-container">
             {list.map((item) => (

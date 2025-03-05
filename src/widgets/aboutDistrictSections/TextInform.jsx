@@ -13,7 +13,6 @@ export const TextInform = ({ currentTitle, currentText, person, link, bgImg }) =
         } 
     }
 
-    console.log(index);
     
     
     return (
@@ -24,15 +23,14 @@ export const TextInform = ({ currentTitle, currentText, person, link, bgImg }) =
                     <p className="image-text" 
                      dangerouslySetInnerHTML={{ __html: currentTitle }}></p>
                 </div>
-                <p dangerouslySetInnerHTML={{ __html: currentText }}></p>
+                <p className='info-text' dangerouslySetInnerHTML={{ __html: currentText }}></p>
                 { 
                     link && (
                     <div>
                         <iframe 
-                            src={link} 
+                            src={'https://inlnk.ru/jEAYoL'} 
                             width="100%" 
                             height="300" 
-                            
                             style={{ borderRadius: 20, border: 'none' }} 
                             allowFullScreen 
                             loading="lazy" 

@@ -28,3 +28,6 @@ export const getDestricts = () => {
   return axiosApi.get('/api/v1/passport/type_information/');
 }
 
+export const getGlobalSettings = () => {
+  return axiosApi.get('/api/v1/base/settings/');
+}

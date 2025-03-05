@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import '../../../app/styles/app.scss'
 import '../slide.scss';
+import { motion, AnimatePresence } from "framer-motion";
 
 export const Vacancies = ({vacancies}) => {
   // const vacElement = [
@@ -44,12 +45,22 @@ export const Vacancies = ({vacancies}) => {
               <h2>{item.title}</h2>
               <p ><i dangerouslySetInnerHTML={{__html: item.description}}></i></p>
             </div>
-            
-            {openEventId === index && (
-              <div className="details-content">
-                <p dangerouslySetInnerHTML={{__html: item.description_detail}}></p>
-              </div>
-            )}
+
+            <AnimatePresence initial={false}>
+              {openEventId === index && (
+                <motion.div 
+                  className="details-content"
+                  style={{ overflow: "hidden" }}
+                  initial={{ height: 0 }}
+                  animate={{ height: "auto", opacity: 1 }}
+                  exit={{ height: 0 }}
+                  transition={{ height: { duration: 0.5 }, opacity: { duration: 0.2 } }}
+                >
+                  <p dangerouslySetInnerHTML={{__html: item.description_detail}}></p>
+                </motion.div>
+              )}
+            </AnimatePresence>
+
             <div className="link">
               <button onClick={(e) => handleButtonClick(e, index)} className="events_button">
                 <p>{openEventId === index ? "Закрыть" : "Подробнее"}</p>

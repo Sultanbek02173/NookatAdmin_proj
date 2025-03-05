@@ -1,16 +1,12 @@
 import { useEffect, useState } from "react";
 import "../header.scss";
 import "../burgermenu.scss";
-
-import HeaderMenu from "./HeaderMenu";
-import locationIcon from "../../../shared/images/locationIcon.svg";
-import languageIcon from "../../../shared/images/languageIcon.svg";
-import phoneIcon from "../../../shared/images/phoneIcon.svg";
-import instagramIcon from "../../../shared/images/instagramIcon.svg";
-import telegramIcon from "../../../shared/images/telegramIcon.svg";
-import whatsappIcon from "../../../shared/images/whatsappIcon.svg";
-import youtubeIcon from "../../../shared/images/youtubeIcon.svg";
 import { useTranslation } from 'react-i18next';
+import { FaLocationDot } from "react-icons/fa6";
+import { FaInstagram, FaPhoneAlt, FaTelegramPlane, FaYoutube } from "react-icons/fa";
+import { IoLogoWhatsapp } from "react-icons/io";
+import { MdLanguage } from "react-icons/md";
+import { useSelector } from "react-redux";
 
 
 const BurgerMenu = () => {
@@ -23,6 +19,9 @@ const BurgerMenu = () => {
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
+
+  const { setting } = useSelector((state) => state.setting);
+
 
   useEffect(() => {
     if (isOpen) {
@@ -51,36 +50,40 @@ const BurgerMenu = () => {
         <div className="">
           <div className="contact_info">
             <div>
-              <img src={locationIcon} alt="Location" />
-              <p>ул. Центральная, 45, г. Ноокат</p></div>
+              <a href={setting ? setting[0]?.location : ''} target="_blank"><FaLocationDot size={25} /></a>
+              <a href={setting ? setting[0]?.location : ''} target="_blank"><p>ул. Центральная, 45, г. Ноокат</p></a>
+            </div>
             <div>
-              <img src={phoneIcon} alt="Phone" />
-              <p>+996 995 898 977</p></div>
+              <FaPhoneAlt />
+              <a href={`tel:${setting ? setting[0]?.phone : ''}`} target="_blank">
+                <p>{setting ? setting[0]?.phone : ''}</p>
+              </a>
+            </div>
             <div> 
-              <img src={languageIcon} alt="Language" />
+              <MdLanguage size={25} />
+              
               <button onClick={() => handleChangeLang({ target: { value: 'ru' } })}>RU</button>
               <span>/</span>
               <button onClick={() => handleChangeLang({ target: { value: 'kg' } })}>KG</button>
             </div>
 
             <div className="socials">
-              <a href=""><div>
-                <img src={instagramIcon} alt="Instagram" />
+              <a href={setting ? setting[0]?.link_insta : ''} target="_blank"><div>
+                <FaInstagram />
+                
               </div></a>
               <div>
-                <a href=""> <img src={telegramIcon} alt="Telegram" /></a>
+                <a href={setting ? setting[0]?.link_telegram : ''} target="_blank"><FaTelegramPlane /></a>
               </div>
               <div>
-                <a href=""> <img src={whatsappIcon} alt="WhatsApp" /></a>
+                <a href={`https://wa.me/${setting ? setting[0]?.link_watapp : ''}`} target="_blank"> <IoLogoWhatsapp /></a>
               </div>
               <div>
-                <a href=""> <img src={youtubeIcon} alt="YouTube" /></a>
+                <a href={setting ? setting[0]?.link_youtube : ''} target="_blank"> <FaYoutube /></a>
               </div>
             </div>
           </div>
         </div>
-        {/* <HeaderMenu /> */}
-
       </ul>
 
     </div>
