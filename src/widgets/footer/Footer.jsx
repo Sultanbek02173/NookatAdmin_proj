@@ -69,11 +69,11 @@ export const Footer = () => {
 
                 </h2>
                 <div className="socials">
-                  <div>
+                  {/* <div>
                     <a href={setting ? setting[0]?.link_insta : ''} target="_blank">
                       <FaInstagram color="#227DA5" size={25} />
                     </a>
-                  </div>
+                  </div> */}
                   <div>
                     <a href={setting ? setting[0]?.link_facebook : ''} target="_blank">
                       <FaFacebookF color="#227DA5" size={25} />

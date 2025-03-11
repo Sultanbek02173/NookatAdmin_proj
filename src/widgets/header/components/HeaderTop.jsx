@@ -1,5 +1,4 @@
-import { FaInstagram, FaPhoneAlt, FaTelegramPlane, FaYoutube } from "react-icons/fa";
-import { IoLogoWhatsapp } from "react-icons/io";
+import { FaFacebookF, FaPhoneAlt } from "react-icons/fa";
 import { FaLocationDot } from "react-icons/fa6";
 import { MdLanguage } from "react-icons/md";
 import { LiaEyeSlashSolid, LiaEyeSolid } from "react-icons/lia";
@@ -46,7 +45,7 @@ const HeaderTop = ({mainTextSpeech}) => {
         <img src={setting ? setting[0]?.logo : ''} alt="Logo" />
         <h1>{setting ? setting[0]?.title_logo : ''}</h1>
       </div>
-      <BurgerMenu />
+      <BurgerMenu mainTextSpeech={mainTextSpeech} />
       <div className="headerTop_right">
         <a href={setting ? setting[0]?.location : ''} target="_blank"><FaLocationDot size={25} /></a>
         <a href={setting ? setting[0]?.location : ''} target="_blank"><p>{setting ? setting[0]?.location_name : ''}</p></a>
@@ -89,18 +88,18 @@ const HeaderTop = ({mainTextSpeech}) => {
         </a>
 
         <div className="socials">
-          <a href={setting ? setting[0]?.link_insta : ''} target="_blank">
+          {/* <a href={setting ? setting[0]?.link_insta : ''} target="_blank">
             <div>
               <FaInstagram />
 
             </div>
-          </a>
-          <a href={setting ? setting[0]?.link_telegram : ''} target="_blank">
+          </a> */}
+          <a href={setting ? setting[0]?.link_facebook : ''} target="_blank">
             <div>
-                <FaTelegramPlane />
+                <FaFacebookF />
             </div>
           </a>
-          <a href={`https://wa.me/${setting ? setting[0]?.link_watapp : ''}`} target="_blank">
+          {/* <a href={`https://wa.me/${setting ? setting[0]?.link_watapp : ''}`} target="_blank">
             <div>
               <IoLogoWhatsapp />
             </div>
@@ -109,7 +108,7 @@ const HeaderTop = ({mainTextSpeech}) => {
             <div>
               <FaYoutube />
             </div>
-          </a>
+          </a> */}
         </div>
       </div>
     </div>

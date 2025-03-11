@@ -6,11 +6,15 @@ import { FaLocationDot } from "react-icons/fa6";
 import { FaInstagram, FaPhoneAlt, FaTelegramPlane, FaYoutube } from "react-icons/fa";
 import { IoLogoWhatsapp } from "react-icons/io";
 import { MdLanguage } from "react-icons/md";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { activeMode, deactivateMode, useVisually } from "../../../app/store/reducers/visually";
+import { LiaEyeSlashSolid, LiaEyeSolid } from "react-icons/lia";
 
 
-const BurgerMenu = () => {
+const BurgerMenu = ({mainTextSpeech}) => {
   const [isOpen, setIsOpen] = useState(false);
+  const { active } = useVisually();
+  const dispatch = useDispatch();
 
   const { i18n } = useTranslation();
   const handleChangeLang = ({ target: { value } }) => {
@@ -65,6 +69,20 @@ const BurgerMenu = () => {
               <button onClick={() => handleChangeLang({ target: { value: 'ru' } })}>RU</button>
               <span>/</span>
               <button onClick={() => handleChangeLang({ target: { value: 'kg' } })}>KG</button>
+              <span>/</span>
+              {!active ? (
+                <button className="activeBtn" onClick={() => {
+                  dispatch(activeMode())
+                  mainTextSpeech('Режим для слабозрячих включен');
+                }}><LiaEyeSolid size={20} /></button>
+              ) : (
+                <button className="activeBtn" onClick={() => {
+                  dispatch(deactivateMode());
+                  mainTextSpeech('Режим для слабозрячих выключен');
+                }}>
+                  <LiaEyeSlashSolid />
+                </button>
+              )}
             </div>
 
             <div className="socials">
